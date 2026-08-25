@@ -32,7 +32,13 @@ phones, email. No invented facts. Ramadan hours shown in Horaires card.
 
 - Mobile: header = call button (clinic line) · fixed bottom bar = Urgence + WhatsApp · hero = WhatsApp + Urgence
   (hero scrolls away; fixed chrome carries one WhatsApp entry only)
-- Desktop: header WhatsApp pill + floating urgence pill bottom-right, no fixed bar
+- Desktop: header WhatsApp pill, no fixed bar, no floating pill — urgence lives in hero + contact card + footer
+
+## Protocol carousel
+
+`#chirurgie` protocol = swipeable scroll-snap carousel: 78vw cards on phone (peek of next),
+340px cards from tablet up, dot indicators + arrow buttons, keyboard-focusable track.
+Verified 320/390/768/1024/1280/1440 — zero horizontal overflow.
 
 ## Google Maps
 
