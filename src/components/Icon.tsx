@@ -112,6 +112,13 @@ export function Icon({ name, className = 'h-5 w-5' }: { name: string; className?
         <path d="M12 16.6v.01" />
       </>
     ),
+    globe: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18" />
+        <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z" />
+      </>
+    ),
   }
   return (
     <svg

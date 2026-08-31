@@ -1,43 +1,45 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { Icon } from '../components/Icon'
+import { Link } from '../components/Link'
 import { faqJsonLd } from '../components/jsonld'
 import { Seo } from '../components/Seo'
-import { FAQ, WA_LINK } from '../data'
+import { useI18n } from '../i18n'
+import { pathFor } from '../i18n/config'
+import { WA_LINK } from '../data'
 
 /* ------------------------------------------------------------------ */
 /* Page FAQ — accordéon + données structurées FAQPage                  */
 /* ------------------------------------------------------------------ */
 
 export function FaqPage() {
+  const { t, locale, routeId } = useI18n()
   const [open, setOpen] = useState<number | null>(0)
 
   return (
     <>
       <Seo
-        title="FAQ — Tarifs, horaires, urgences | Clinique Vétérinaire Maârif Casablanca"
-        description="Questions fréquentes : prix d'une consultation, coût d'une stérilisation, horaires, urgences, rendez-vous, NAC. Clinique Vétérinaire Maârif, Casablanca."
-        path="/faq/"
-        jsonLd={[faqJsonLd(FAQ)]}
+        routeId={routeId}
+        title={t.meta.faq.title}
+        description={t.meta.faq.description}
+        jsonLd={[faqJsonLd(t.faq.items)]}
       />
 
       {/* Hero de page */}
       <section className="section-pad bg-ink pb-16 pt-32 text-paper md:pb-20">
         <div className="mx-auto max-w-6xl">
-          <p className="eyebrow text-[#8fd0c9]!">Questions fréquentes</p>
+          <p className="eyebrow text-[#8fd0c9]!">{t.faq.heroKicker}</p>
           <h1 className="mt-3 max-w-3xl font-display text-[clamp(2.1rem,5vw,3.4rem)] font-bold leading-[1.06] tracking-tight">
-            Vous vous demandez peut-être…
+            {t.faq.heroH1}
           </h1>
           <p className="mt-5 max-w-2xl text-[1.04rem] leading-relaxed text-paper/80">
-            Les réponses aux questions qu'on nous pose le plus souvent. Le cas échéant, un message
-            WhatsApp vaut mieux qu'une hésitation.
+            {t.faq.heroSub}
           </p>
         </div>
       </section>
 
       <section className="section-pad mx-auto max-w-3xl py-16 md:py-20">
         <div className="space-y-3">
-          {FAQ.map((f, i) => {
+          {t.faq.items.map((f, i) => {
             const isOpen = open === i
             return (
               <div
@@ -79,12 +81,9 @@ export function FaqPage() {
         <div className="reveal mt-12 rounded-2xl border border-teal/25 bg-teal-soft/40 p-6 md:p-8">
           <div className="flex items-center gap-2.5">
             <Icon name="question" className="h-5 w-5 text-teal" />
-            <h2 className="font-display text-lg font-semibold">Une question qui n'y est pas ?</h2>
+            <h2 className="font-display text-lg font-semibold">{t.faq.moreTitle}</h2>
           </div>
-          <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-2">
-            Écrivez-nous sur WhatsApp — réponse rapide, même pour une simple question de tarif ou
-            de disponibilité.
-          </p>
+          <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-2">{t.faq.moreP}</p>
           <a
             href={WA_LINK}
             target="_blank"
@@ -92,21 +91,18 @@ export function FaqPage() {
             className="mt-4 inline-flex items-center gap-2 rounded-full bg-teal px-5 py-2.5 text-[0.9rem] font-semibold text-white transition-colors hover:bg-teal-deep"
           >
             <Icon name="whatsapp" className="h-4 w-4" />
-            Poser la question
+            {t.faq.moreCta}
           </a>
           <p className="mt-3 text-[0.85rem] text-ink-3">
-            Ou consultez directement{' '}
-            <Link to="/services/" className="font-semibold text-teal hover:underline">
-              nos services
+            {t.faq.moreLinkP1}{' '}
+            <Link to={pathFor('services', locale)} className="font-semibold text-teal hover:underline">
+              {t.faq.moreLinkP2}
             </Link>
             .
           </p>
         </div>
 
-        <p className="reveal mt-8 text-center text-[0.8rem] text-ink-3">
-          Tarifs indicatifs, susceptibles d'évoluer — le devis définitif est toujours annoncé
-          avant l'acte.
-        </p>
+        <p className="reveal mt-8 text-center text-[0.8rem] text-ink-3">{t.faq.disclaimer}</p>
       </section>
     </>
   )

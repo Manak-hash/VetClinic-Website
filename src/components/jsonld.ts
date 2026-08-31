@@ -1,67 +1,66 @@
-import { CLINIC, FAQ } from '../data'
+import { SITE_URL, pathFor, type Locale, type RouteId } from '../i18n/config'
+import type { Messages } from '../i18n'
+import { CLINIC } from '../data'
 
 /* ------------------------------------------------------------------ */
-/* JSON-LD partagés — séparés du composant Seo (react-refresh)         */
+/* JSON-LD locale-aware — construits depuis les dictionnaires          */
 /* ------------------------------------------------------------------ */
 
-const SITE_URL = 'https://cliniquevetomaarif.ma'
-
-/* LocalBusiness / VeterinaryCare — site entier */
-export const LOCAL_BUSINESS_LD = {
-  '@context': 'https://schema.org',
-  '@type': 'VeterinaryCare',
-  name: CLINIC.name,
-  url: SITE_URL,
-  telephone: `+212${CLINIC.phone.replace(/\s/g, '').replace(/^0/, '')}`,
-  email: CLINIC.email,
-  foundingDate: CLINIC.founded,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: CLINIC.address.street,
-    addressLocality: 'Casablanca',
-    addressRegion: 'Casablanca-Settat',
-    postalCode: CLINIC.address.zip,
-    addressCountry: 'MA',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: CLINIC.address.lat,
-    longitude: CLINIC.address.lng,
-  },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '19:00',
+/** VeterinaryCare — site entier, traduit par locale. */
+export function localBusinessLd(t: Messages) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VeterinaryCare',
+    name: t.common.clinicName,
+    url: SITE_URL,
+    telephone: `+212${CLINIC.phone.replace(/\s/g, '').replace(/^0/, '')}`,
+    email: CLINIC.email,
+    foundingDate: CLINIC.founded,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: CLINIC.address.street,
+      addressLocality: t.common.addressCity,
+      addressRegion: 'Casablanca-Settat',
+      postalCode: CLINIC.address.zip,
+      addressCountry: 'MA',
     },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: 'Saturday',
-      opens: '09:00',
-      closes: '14:00',
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: CLINIC.address.lat,
+      longitude: CLINIC.address.lng,
     },
-  ],
-  areaServed: ['Maârif', 'Gauthier', 'Anfa', 'Casablanca'].map((n) => ({
-    '@type': 'Place',
-    name: n,
-  })),
-  medicalSpecialty: 'VeterinaryCare',
-  availableService: [
-    'Consultation vétérinaire',
-    'Chirurgie vétérinaire',
-    'Radiographie vétérinaire',
-    'Hospitalisation',
-    'Urgences vétérinaires',
-  ].map((n) => ({ '@type': 'MedicalProcedure', name: n })),
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '19:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Saturday',
+        opens: '09:00',
+        closes: '14:00',
+      },
+    ],
+    areaServed: ['Maârif', 'Gauthier', 'Anfa', t.common.addressCity].map((n) => ({
+      '@type': 'Place',
+      name: n,
+    })),
+    medicalSpecialty: 'VeterinaryCare',
+    availableService: Object.values(t.services.items).map((s) => ({
+      '@type': 'MedicalProcedure',
+      name: s.title,
+    })),
+  }
 }
 
-/* FAQPage complet */
-export function faqJsonLd(faq: { q: string; a: string }[]) {
+/** FAQPage — items traduits. */
+export function faqJsonLd(items: { q: string; a: string }[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faq.map((f) => ({
+    mainEntity: items.map((f) => ({
       '@type': 'Question',
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -69,5 +68,19 @@ export function faqJsonLd(faq: { q: string; a: string }[]) {
   }
 }
 
-/* Teaser FAQ (3 premières questions) — accueil */
-export const FAQ_TEASER_LD = faqJsonLd(FAQ.slice(0, 3))
+/** Fil d'Ariane — noms traduits, chemins par locale. */
+export function breadcrumbLd(
+  locale: Locale,
+  trail: { name: string; id?: RouteId }[],
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: trail.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.name,
+      ...(c.id ? { item: `${SITE_URL}${pathFor(c.id, locale)}` } : {}),
+    })),
+  }
+}

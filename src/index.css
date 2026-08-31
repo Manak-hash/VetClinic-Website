@@ -236,3 +236,52 @@ body {
     animation: none;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Sélecteur de langue — dropdown attaché à la barre (le "kiss")       */
+/* ------------------------------------------------------------------ */
+
+.lang-trigger {
+  position: relative;
+}
+.lang-trigger-open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 2px solid var(--color-teal);
+  padding-bottom: calc(0.5rem - 2px);
+}
+.lang-panel {
+  transform-origin: top right;
+  transition-duration: 0.18s;
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+[dir='rtl'] .lang-panel {
+  transform-origin: top left;
+  right: auto;
+  left: 0;
+}
+.lang-option-active {
+  position: relative;
+  background: color-mix(in srgb, var(--color-teal) 8%, transparent);
+}
+.lang-option-active::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--color-teal);
+}
+
+/* ------------------------------------------------------------------ */
+/* RTL — renversements physiques que Tailwind ne couvre pas            */
+/* ------------------------------------------------------------------ */
+
+[dir='rtl'] .no-scrollbar {
+  direction: rtl;
+}
+[dir='rtl'] .rtl-flip {
+  transform: scaleX(-1);
+}
