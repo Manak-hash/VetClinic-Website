@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cliniquevetomaarif.ma/sitemap.xml
