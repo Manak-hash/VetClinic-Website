@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Icon } from '../components/Icon'
 import { Seo } from '../components/Seo'
-import { CLINIC, TEL_CLINIC, WA_LINK, HOURS } from '../data'
+import { CLINIC, TEL_CLINIC, WA_LINK, HOURS, LANGUAGES } from '../data'
 
 /* ------------------------------------------------------------------ */
 /* Page Équipe — Dr Bassir + la clinique (repris et étendu de la démo) */
@@ -67,6 +67,10 @@ export function EquipePage() {
                 par des visages connus, et le Dr Bassir suit personnellement les dossiers
                 chirurgicaux du début à la fin.
               </p>
+              <p>
+                Nous accueillons nos clients en <strong>quatre langues</strong> : arabe, français,
+                anglais et russe.
+              </p>
             </div>
           </div>
         </div>
@@ -93,6 +97,29 @@ export function EquipePage() {
                   <p className="text-[0.82rem] text-ink-3">{f.sub}</p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Langues parlées */}
+        <div className="reveal mt-16">
+          <h2 className="font-display text-[1.4rem] font-bold tracking-tight">
+            On parle votre langue
+          </h2>
+          <p className="mt-2 max-w-2xl text-[0.98rem] leading-relaxed text-ink-2">
+            Toute l'équipe accueille et soigne en quatre langues — en consultation comme au
+            téléphone.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            {LANGUAGES.map((l) => (
+              <span
+                key={l.code}
+                className="flex items-center gap-2.5 rounded-full border border-line bg-white px-5 py-2.5"
+              >
+                <Icon name="check" className="h-4 w-4 text-teal" />
+                <span className="text-[0.95rem] font-semibold">{l.name}</span>
+                <span className="text-[0.9rem] text-ink-3">{l.native}</span>
+              </span>
             ))}
           </div>
         </div>

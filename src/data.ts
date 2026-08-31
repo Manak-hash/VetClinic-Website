@@ -188,12 +188,8 @@ export const AFTERCARE = [
 
 export const FAQ = [
   {
-    q: 'Combien coûte une consultation ?',
-    a: 'La consultation standard est à 200 MAD (150 MAD pour une simple réc consultation dans les 15 jours pour le même motif). Les actes supplémentaires — vaccin, radiographie, analyse — vous sont annoncés et chiffrés avant d’être réalisés.',
-  },
-  {
-    q: 'Combien coûte une stérilisation ?',
-    a: 'Le devis est établi à la visite préopératoire : il dépend de l’espèce, du sexe et du poids de l’animal. Comptez en général entre 600 et 1 200 MAD, tout compris (intervention, anesthésie, antalgiques et contrôle des points).',
+    q: 'Combien coûte une consultation ou une intervention ?',
+    a: 'Nos tarifs vous sont communiqués sur demande — par WhatsApp ou par téléphone. Pour toute intervention, un devis précis vous est remis avant l’acte : pas de surprise, vous savez exactement ce que vous payez.',
   },
   {
     q: 'Quels sont vos horaires ?',
@@ -213,7 +209,11 @@ export const FAQ = [
   },
   {
     q: 'Où se garer près de la clinique ?',
-    a: 'La clinique se trouve au 60, boulevard Bir Anzarane, au cœur du Maârif. Le stationnement se fait dans les rues adjacentes ; la station de tramway « Les Hospitalités » est à 10 minutes à pied pour les visiteurs venus du centre.',
+    a: 'La clinique dispose d’un stationnement privé devant l’entrée, réservé à nos clients : vous vous garez directement devant, sans chercher de place. Le 60, boulevard Bir Anzarane se trouve au cœur du Maârif.',
+  },
+  {
+    q: 'Parlez-vous d’autres langues ?',
+    a: 'Oui. À la clinique, nous parlons quatre langues : arabe, français, anglais et russe. Vous êtes accueilli dans la langue qui vous convient.',
   },
 ]
 
@@ -245,7 +245,7 @@ export const QUARTIERS: Quartier[] = [
     access:
       'Le boulevard Bir Anzarane est desservi par les lignes de bus qui traversent le Maârif nord-sud. En voiture, on accède facilement depuis la rue Ibn Batouta ou l’avenue des FAR.',
     parking:
-      'Stationnement dans les rues adjacentes (rue Moulay Ismaïl, rue Ahmed El Mejatti) — souvent plus simple que devant la clinique en heure de pointe.',
+      'Stationnement privé devant la clinique, réservé à nos clients — vous vous garez directement devant, même en heure de pointe.',
     whyUs:
       'Nous soignons les animaux du quartier depuis 2002 : beaucoup de nos clients nous ont confié deux, parfois trois générations d’animaux. C’est cette continuité qui fait qu’un vétérinaire de quartier n’est pas un vétérinaire comme les autres.',
   },
@@ -263,7 +263,7 @@ export const QUARTIERS: Quartier[] = [
     access:
       'Depuis le Gauthier, remontez le boulevard Bir Anzarane vers le sud-est : la clinique est sur votre gauche après le croisement avec la rue Moulay Ismaïl.',
     parking:
-      'Venir du Gauthier en voiture est rapide, mais le boulevard Bir Anzarane est animé : privilégiez le stationnement rue Moulay Ismaïl côté Maârif.',
+      'Stationnement privé devant la clinique, réservé à nos clients — pas besoin de chercher une place en arrivant du Gauthier.',
     whyUs:
       'Le Gauthier compte beaucoup de familles avec chats et petits chiens — notre secteur de prédilection. Vaccination, stérilisation, suivi senior : le suivi de proximité sans traverser la ville.',
   },
@@ -281,10 +281,19 @@ export const QUARTIERS: Quartier[] = [
     access:
       'Depuis Anfa, longez l’avenue des FAR puis tournez sur le boulevard Bir Anzarane en direction du Maârif. La clinique est en façade du boulevard.',
     parking:
-      'Stationnement aisé dans les rues latérales du Maârif, à 50 m de la clinique.',
+      'Stationnement privé devant la clinique, réservé à nos clients — vous vous garez directement en arrivant d’Anfa.',
     whyUs:
       'Beaucoup de nos clients d’Anfa nous ont trouvés après une urgence, puis sont restés pour le suivi. Pour les familles de la côte, c’est le vétérinaire chirurgien de référence à 10 minutes.',
   },
+]
+
+/* ----- Langues parlées à la clinique (Dr Bassir, 31/08) ------------ */
+
+export const LANGUAGES = [
+  { code: 'ar', name: 'Arabe', native: 'العربية' },
+  { code: 'fr', name: 'Français', native: 'Français' },
+  { code: 'en', name: 'Anglais', native: 'English' },
+  { code: 'ru', name: 'Russe', native: 'Русский' },
 ]
 
 /* ----- Navigation --------------------------------------------------- */
