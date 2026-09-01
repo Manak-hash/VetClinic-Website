@@ -376,12 +376,12 @@ const en: Messages = {
         intro:
           'The clinic is in the very heart of Maârif: we are quite literally your neighborhood veterinarian. 60, Boulevard Bir Anzarane — the clinic you walk past on your way to the shops.',
         landmarks: [
-          'A stone’s throw from the Maârif market and its shopping streets',
-          'A 5-minute walk from the Bir Anzarane × Massira crossing',
-          'Close to the Maârif flea market and Rue Ibn Batouta',
+          'Less than 500 m from the Maârif market and its shopping streets',
+          'Less than 1 km from the Triangle d’Or',
+          'Less than 1 km from the Bir Anzarane × Massira crossing',
         ],
         access:
-          'Boulevard Bir Anzarane is served by bus lines crossing Maârif north to south. By car, it is easily reached from Rue Ibn Batouta or Avenue des FAR.',
+          'The clinic faces Boulevard Bir Anzarane, the main axis running through Maârif. Bus lines on the boulevard, taxi stand nearby.',
         parking:
           'Private parking in front of the clinic, reserved for our clients — you park right outside, even at rush hour.',
         whyUs:
@@ -390,14 +390,14 @@ const en: Messages = {
       gauthier: {
         title: 'Veterinarian in Gauthier, Casablanca',
         intro:
-          'From Gauthier, the clinic is a 5-minute drive — head toward Maârif via Boulevard Bir Anzarane. Many of our clients come from Gauthier and upper Anfa.',
+          'Gauthier borders Maârif to the north: from the Chaouia market or Boulevard d’Anfa, the clinic is about 2 km away — close-to-home veterinary care without crossing the city.',
         landmarks: [
-          '1.5 km from the Gauthier Market',
-          '5 minutes from Boulevard d’Anfa',
-          'A 10-minute walk from Lycée Lyautey (via Rue Ibnou Mounir)',
+          'About 2 km from the Chaouia market (heart of Gauthier)',
+          'Less than 2 km from Lycée Lyautey',
+          'Less than 1 km from Rue Ibnou Mounir',
         ],
         access:
-          'From Gauthier, follow Boulevard Bir Anzarane southeast: the clinic is on your left after the crossing with Rue Moulay Ismaïl.',
+          'From Gauthier, join Boulevard Bir Anzarane and head southeast: the clinic faces the boulevard, on the Maârif side.',
         parking:
           'Private parking in front of the clinic, reserved for our clients — no need to hunt for a spot when coming from Gauthier.',
         whyUs:
@@ -406,18 +406,18 @@ const en: Messages = {
       anfa: {
         title: 'Veterinarian in Anfa, Casablanca',
         intro:
-          'From California to upper Anfa, the clinic is under 10 minutes away — Boulevard Bir Anzarane, at the entrance to Maârif. The route is direct via Avenue des FAR.',
+          'From upper Anfa to the corniche, the clinic is about 3 to 4 km away — Boulevard Bir Anzarane, at the entrance to Maârif. A direct route, without crossing downtown.',
         landmarks: [
-          '10 minutes from the Hassan II Mosque (via Avenue des FAR)',
-          '5 minutes from Anfa Place and Boulevard d’Anfa',
-          '10 minutes from the California district (via Boulevard Moulay Youssef)',
+          'About 3 km from the Hassan II Mosque',
+          'About 3.5 km from Anfaplace and the corniche',
+          'Less than 3 km from Boulevard Moulay Youssef',
         ],
         access:
-          'From Anfa, follow Avenue des FAR then turn onto Boulevard Bir Anzarane toward Maârif. The clinic faces the boulevard.',
+          'From Anfa, take Avenue des FAR or Boulevard Moulay Youssef, then Boulevard Bir Anzarane toward Maârif. The clinic faces the boulevard.',
         parking:
           'Private parking in front of the clinic, reserved for our clients — you park right outside when coming from Anfa.',
         whyUs:
-          'Many of our Anfa clients found us during an emergency, then stayed for follow-up care. For families on the coast, we are the reference surgical veterinarian, 10 minutes away.',
+          'Many of our Anfa clients found us during an emergency, then stayed for follow-up care. For families on the coast, we are the reference surgical veterinarian, just minutes away.',
       },
     },
     landmarksTitle: (name: string) => `Landmarks from ${name}`,

@@ -55,7 +55,7 @@ export function LanguageMenu({ onDark = false }: { onDark?: boolean }) {
           onDark
             ? 'border-paper/25 bg-white/10 text-paper hover:bg-white/20'
             : 'border-line bg-white/80 text-ink hover:bg-white'
-        } ${open ? 'lang-trigger-open' : ''}`}
+        }`}
       >
         <Icon name="globe" className="h-4 w-4" />
         {LOCALE_META[locale].label}

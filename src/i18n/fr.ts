@@ -573,12 +573,12 @@ const fr: Messages = {
         intro:
           'La clinique est AU CŒUR du Maârif : nous sommes littéralement votre vétérinaire de quartier. 60, boulevard Bir Anzarane — la clinique que vous croisez en descendant faire vos courses.',
         landmarks: [
-          'À deux pas du marché Maârif et de ses rues commerçantes',
-          'À 5 minutes à pied du croisement Bir Anzarane × Massira',
-          'À proximité du marché aux puces du Maârif et de la rue Ibn Batouta',
+          'À moins de 500 m du marché Maârif et de ses rues commerçantes',
+          'À moins de 1 km du Triangle d’Or',
+          'À moins de 1 km du croisement Bir Anzarane × Massira',
         ],
         access:
-          'Le boulevard Bir Anzarane est desservi par les lignes de bus qui traversent le Maârif nord-sud. En voiture, on accède facilement depuis la rue Ibn Batouta ou l’avenue des FAR.',
+          'La clinique est en façade du boulevard Bir Anzarane, l’axe principal qui traverse le Maârif. Lignes de bus sur le boulevard, station de taxi à proximité.',
         parking:
           'Stationnement privé devant la clinique, réservé à nos clients — vous vous garez directement devant, même en heure de pointe.',
         whyUs:
@@ -587,14 +587,14 @@ const fr: Messages = {
       gauthier: {
         title: 'Vétérinaire au Gauthier, Casablanca',
         intro:
-          'Du Gauthier, la clinique est à 5 minutes en voiture — direction Maârif, par le boulevard Bir Anzarane. Beaucoup de nos clients viennent du Gauthier et d’Anfa supérieur.',
+          'Le Gauthier jouxte le Maârif par le nord : depuis le marché Chaouia ou le boulevard d’Anfa, la clinique est à environ 2 km — le vétérinaire de proximité sans traverser la ville.',
         landmarks: [
-          'À 1,5 km du Marché du Gauthier',
-          'À 5 minutes du boulevard d’Anfa',
-          'À 10 minutes à pied du Lycée Lyautey (par la rue Ibnou Mounir)',
+          'À environ 2 km du marché Chaouia (cœur du Gauthier)',
+          'À moins de 2 km du Lycée Lyautey',
+          'À moins de 1 km de la rue Ibnou Mounir',
         ],
         access:
-          'Depuis le Gauthier, remontez le boulevard Bir Anzarane vers le sud-est : la clinique est sur votre gauche après le croisement avec la rue Moulay Ismaïl.',
+          'Depuis le Gauthier, rejoignez le boulevard Bir Anzarane et descendez vers le sud-est : la clinique est en façade du boulevard, côté Maârif.',
         parking:
           'Stationnement privé devant la clinique, réservé à nos clients — pas besoin de chercher une place en arrivant du Gauthier.',
         whyUs:
@@ -603,18 +603,18 @@ const fr: Messages = {
       anfa: {
         title: 'Vétérinaire à Anfa, Casablanca',
         intro:
-          'De la Californie à Anfa supérieur, la clinique est à moins de 10 minutes — boulevard Bir Anzarane, à l’entrée du Maârif. L’itinéraire est direct par l’avenue des FAR.',
+          'D’Anfa supérieur à la corniche, la clinique est à environ 3 à 4 km — boulevard Bir Anzarane, à l’entrée du Maârif. Un itinéraire direct, sans traverser le centre.',
         landmarks: [
-          'À 10 minutes de la Mosquée Hassan-II (par l’avenue des FAR)',
-          'À 5 minutes d’Anfa Place et du boulevard d’Anfa',
-          'À 10 minutes du quartier California (par le boulevard Moulay Youssef)',
+          'À environ 3 km de la Mosquée Hassan-II',
+          'À environ 3,5 km d’Anfaplace et de la corniche',
+          'À moins de 3 km du boulevard Moulay Youssef',
         ],
         access:
-          'Depuis Anfa, longez l’avenue des FAR puis tournez sur le boulevard Bir Anzarane en direction du Maârif. La clinique est en façade du boulevard.',
+          'Depuis Anfa, rejoignez l’avenue des FAR ou le boulevard Moulay Youssef, puis le boulevard Bir Anzarane en direction du Maârif. La clinique est en façade du boulevard.',
         parking:
           'Stationnement privé devant la clinique, réservé à nos clients — vous vous garez directement en arrivant d’Anfa.',
         whyUs:
-          'Beaucoup de nos clients d’Anfa nous ont trouvés après une urgence, puis sont restés pour le suivi. Pour les familles de la côte, c’est le vétérinaire chirurgien de référence à 10 minutes.',
+          'Beaucoup de nos clients d’Anfa nous ont trouvés après une urgence, puis sont restés pour le suivi. Pour les familles de la côte, c’est le vétérinaire chirurgien de référence à quelques minutes.',
       },
     },
     landmarksTitle: (name: string) => `Repères depuis ${name}`,

@@ -244,35 +244,28 @@ body {
 .lang-trigger {
   position: relative;
 }
-.lang-trigger-open {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: 2px solid var(--color-teal);
-  padding-bottom: calc(0.5rem - 2px);
-}
+/* La pilule garde sa forme ouverte/fermée — le panel flotte sous elle */
 .lang-panel {
   transform-origin: top right;
   transition-duration: 0.18s;
   transition-timing-function: cubic-bezier(0.2, 0.8, 0.3, 1);
+  margin-top: 4px;
+  border-radius: 14px;
+  border-top: 1px solid var(--color-line);
 }
 [dir='rtl'] .lang-panel {
   transform-origin: top left;
   right: auto;
   left: 0;
 }
+/* Option sélectionnée : fond OPAQUE + texte contrasté (jamais fade) */
 .lang-option-active {
   position: relative;
-  background: color-mix(in srgb, var(--color-teal) 8%, transparent);
+  background: var(--color-teal-soft);
+  color: var(--color-teal-deep);
 }
-.lang-option-active::before {
-  content: '';
-  position: absolute;
-  inset-inline-start: 0;
-  top: 6px;
-  bottom: 6px;
-  width: 3px;
-  border-radius: 999px;
-  background: var(--color-teal);
+.lang-option-active .font-mono {
+  color: var(--color-teal);
 }
 
 /* ------------------------------------------------------------------ */
