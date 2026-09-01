@@ -74,6 +74,7 @@ const en: Messages = {
     footerLine1: 'Veterinary Clinic',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
+    languageLabel: 'Language',
     addressCity: 'Casablanca',
     tagline: 'Your pet, in good hands.',
     footerBlurb:

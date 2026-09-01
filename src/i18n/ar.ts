@@ -73,6 +73,7 @@ const ar: Messages = {
     footerLine1: 'العيادة البيطرية',
     menuOpen: 'فتح القائمة',
     menuClose: 'إغلاق القائمة',
+    languageLabel: 'اللغة',
     addressCity: 'الدار البيضاء',
     tagline: 'حيوانك الأليف بين أيدٍ أمينة.',
     footerBlurb:

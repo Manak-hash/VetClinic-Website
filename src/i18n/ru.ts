@@ -69,6 +69,7 @@ const ru: Messages = {
     footerLine1: 'Ветеринарная клиника',
     menuOpen: 'Открыть меню',
     menuClose: 'Закрыть меню',
+    languageLabel: 'Язык',
     addressCity: 'Касабланка',
     tagline: 'Ваш питомец в надёжных руках.',
     footerBlurb:

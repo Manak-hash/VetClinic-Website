@@ -98,7 +98,6 @@ function Header() {
         </nav>
         {/* Mobile : langues + appel + menu */}
         <div className="flex items-center gap-2 md:hidden">
-          <LanguageMenu onDark={onDark} />
           <a
             href={`tel:${TEL_CLINIC}`}
             className={`flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur transition-colors ${
@@ -121,7 +120,6 @@ function Header() {
           </button>
         </div>
         <div className="hidden items-center gap-2 md:flex">
-          <LanguageMenu onDark={onDark} />
           <a
             href={WA_LINK}
             target="_blank"
@@ -208,6 +206,14 @@ function Footer() {
               </Link>
             ))}
           </nav>
+
+          {/* Langue */}
+          <div className="flex flex-col gap-3">
+            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-paper/45">
+              {t.common.languageLabel}
+            </p>
+            <LanguageMenu onDark />
+          </div>
 
           <div className="flex flex-col gap-2.5 text-[0.92rem] text-paper/70">
             <a href={`tel:${TEL_CLINIC}`} className="transition-colors hover:text-paper">

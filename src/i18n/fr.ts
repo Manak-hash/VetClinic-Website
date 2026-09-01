@@ -52,6 +52,7 @@ export interface Messages {
     footerLine1: string
     menuOpen: string
     menuClose: string
+    languageLabel: string
     addressCity: string
     tagline: string
     footerBlurb: string
@@ -270,6 +271,7 @@ const fr: Messages = {
     footerLine1: 'Clinique Vétérinaire',
     menuOpen: 'Ouvrir le menu',
     menuClose: 'Fermer le menu',
+    languageLabel: 'Langue',
     addressCity: 'Casablanca',
     tagline: 'Votre animal, entre de bonnes mains.',
     footerBlurb:
