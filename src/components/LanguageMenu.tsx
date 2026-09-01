@@ -10,7 +10,7 @@ import { Icon } from './Icon'
 /* (pattern v4 éprouvé : kiss edge, accent réservé à la sélection)     */
 /* ------------------------------------------------------------------ */
 
-export function LanguageMenu() {
+export function LanguageMenu({ onDark = false }: { onDark?: boolean }) {
   const { locale, routeId, t } = useI18n()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -51,9 +51,11 @@ export function LanguageMenu() {
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={t.common.languageMenu}
-        className={`lang-trigger flex items-center gap-1.5 rounded-full border border-line bg-white/80 px-3 py-2 text-[0.82rem] font-semibold text-ink backdrop-blur transition-colors ${
-          open ? 'lang-trigger-open' : 'hover:bg-white'
-        }`}
+        className={`lang-trigger flex items-center gap-1.5 rounded-full border px-3 py-2 text-[0.82rem] font-semibold backdrop-blur transition-colors ${
+          onDark
+            ? 'border-paper/25 bg-white/10 text-paper hover:bg-white/20'
+            : 'border-line bg-white/80 text-ink hover:bg-white'
+        } ${open ? 'lang-trigger-open' : ''}`}
       >
         <Icon name="globe" className="h-4 w-4" />
         {LOCALE_META[locale].label}

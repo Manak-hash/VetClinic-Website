@@ -7,6 +7,7 @@ import { useI18n } from '../i18n'
 import { localBusinessLd, faqJsonLd } from '../components/jsonld'
 import { pathFor } from '../i18n/config'
 import { CLINIC, TEL_URGENCE, WA_LINK } from '../data'
+import { HeroTopFade } from '../components/HeroTopFade'
 
 /* ------------------------------------------------------------------ */
 /* Accueil — condensé qui renvoie vers chaque page dédiée (traduit)    */
@@ -54,6 +55,7 @@ export function HomePage() {
           />
         </motion.div>
         <div className="absolute inset-0 bg-linear-to-b from-ink/70 via-ink/35 to-ink/85" />
+        <HeroTopFade />
 
         <div className="section-pad relative mx-auto flex min-h-[92svh] max-w-6xl flex-col justify-end pb-16 pt-28">
           <motion.p

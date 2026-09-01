@@ -3,6 +3,7 @@ import { Icon } from '../components/Icon'
 import { Link } from '../components/Link'
 import { faqJsonLd } from '../components/jsonld'
 import { Seo } from '../components/Seo'
+import { HeroTopFade } from '../components/HeroTopFade'
 import { useI18n } from '../i18n'
 import { pathFor } from '../i18n/config'
 import { WA_LINK } from '../data'
@@ -26,6 +27,7 @@ export function FaqPage() {
 
       {/* Hero de page */}
       <section className="section-pad bg-ink pb-16 pt-32 text-paper md:pb-20">
+        <HeroTopFade />
         <div className="mx-auto max-w-6xl">
           <p className="eyebrow text-[#8fd0c9]!">{t.faq.heroKicker}</p>
           <h1 className="mt-3 max-w-3xl font-display text-[clamp(2.1rem,5vw,3.4rem)] font-bold leading-[1.06] tracking-tight">

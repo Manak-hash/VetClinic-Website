@@ -28,6 +28,15 @@ function Header() {
   const [open, setOpen] = useState(false)
   const path = usePath()
 
+  /* Option B : en haut de page, la nav est transparente sur un hero
+     sombre → teal clair (8.4:1). Scrollée → fond paper → teal foncé
+     (5.6:1). Toutes les pages ouvrent sur un hero bg-ink. */
+  const onDark = !scrolled
+  const brandColor = onDark ? 'text-[#8fd0c9]' : 'text-teal'
+  const linkIdle = onDark ? 'text-paper/85' : 'text-ink-2'
+  const linkActive = onDark ? 'text-[#8fd0c9]' : 'text-teal'
+  const linkHover = onDark ? 'hover:text-white' : 'hover:text-teal'
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
     onScroll()
@@ -70,7 +79,7 @@ function Header() {
             <span className="font-display text-[1rem] font-semibold leading-tight tracking-tight">
               {t.common.headerLine1}
               <br />
-              <span className="text-teal">{t.common.clinicNameShort}</span>
+              <span className={`${brandColor} transition-colors duration-300`}>{t.common.clinicNameShort}</span>
             </span>
           </span>
         </Link>
@@ -79,8 +88,8 @@ function Header() {
             <Link
               key={n.id}
               to={n.to}
-              className={`text-[0.92rem] font-medium transition-colors hover:text-teal ${
-                routeId === n.id ? 'text-teal' : 'text-ink-2'
+              className={`text-[0.92rem] font-medium transition-colors ${linkHover} ${
+                routeId === n.id ? linkActive : linkIdle
               }`}
             >
               {n.label}
@@ -89,10 +98,12 @@ function Header() {
         </nav>
         {/* Mobile : langues + appel + menu */}
         <div className="flex items-center gap-2 md:hidden">
-          <LanguageMenu />
+          <LanguageMenu onDark={onDark} />
           <a
             href={`tel:${TEL_CLINIC}`}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/80 text-ink backdrop-blur transition-colors hover:bg-white"
+            className={`flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur transition-colors ${
+              onDark ? 'border-paper/25 bg-white/10 text-paper hover:bg-white/20' : 'border-line bg-white/80 text-ink hover:bg-white'
+            }`}
           >
             <Icon name="phone" className="h-4.5 w-4.5" />
             <span className="sr-only">{t.common.callClinic}</span>
@@ -102,13 +113,15 @@ function Header() {
             onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-label={open ? t.common.menuClose : t.common.menuOpen}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/80 text-ink backdrop-blur"
+            className={`flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur transition-colors ${
+              onDark ? 'border-paper/25 bg-white/10 text-paper hover:bg-white/20' : 'border-line bg-white/80 text-ink hover:bg-white'
+            }`}
           >
             <Icon name={open ? 'close' : 'menu'} className="h-5 w-5" />
           </button>
         </div>
         <div className="hidden items-center gap-2 md:flex">
-          <LanguageMenu />
+          <LanguageMenu onDark={onDark} />
           <a
             href={WA_LINK}
             target="_blank"
