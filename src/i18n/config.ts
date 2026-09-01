@@ -74,7 +74,16 @@ export function pathFor(id: RouteId, locale: Locale): string {
 
 /** Retrouve (routeId, locale) depuis un pathname. Retourne null si inconnu. */
 export function routeForPath(pathname: string): { id: RouteId; locale: Locale } | null {
-  const clean = pathname.endsWith('/') && pathname !== '/' ? pathname : pathname + '/'
+  // Normalise : tout chemin non-racine se termine par '/', la racine reste '/'
+  const clean = pathname === '/' ? '/' : pathname.endsWith('/') ? pathname : pathname + '/'
+
+  // Racine = home FR
+  if (clean === '/') return { id: 'home', locale: 'fr' }
+
+  // Préfixe locale seul (/en/, /ru/, /ar/) = home de cette locale
+  const seg = clean.split('/')[1]
+  if (seg && isLocale(seg) && clean === `/${seg}/`) return { id: 'home', locale: seg }
+
   for (const id of Object.keys(ROUTE_PATHS) as RouteId[]) {
     if (id === 'notfound') continue
     for (const locale of LOCALES) {

@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { usePath } from '../router'
 
 /* ------------------------------------------------------------------ */
-/* Hooks de navigation/révélation — séparés du composant Layout        */
+/* Hooks de navigation/révélation — routeur maison (pas react-router)  */
 /* ------------------------------------------------------------------ */
 
 export function useReveal() {
-  const location = useLocation()
+  const path = usePath()
   useEffect(() => {
     const els = document.querySelectorAll('.reveal:not(.revealed)')
     const io = new IntersectionObserver(
@@ -22,13 +22,5 @@ export function useReveal() {
     )
     els.forEach((el) => io.observe(el))
     return () => io.disconnect()
-  }, [location.pathname])
-}
-
-export function ScrollToTop() {
-  const { pathname } = useLocation()
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
-  return null
+  }, [path])
 }
