@@ -107,15 +107,18 @@ function Header() {
             <Icon name={open ? 'close' : 'menu'} className="h-5 w-5" />
           </button>
         </div>
-        <a
-          href={WA_LINK}
-          target="_blank"
-          rel="noreferrer"
-          className="hidden items-center gap-2 rounded-full bg-teal px-4 py-2 text-[0.85rem] font-semibold text-white transition-colors hover:bg-teal-deep md:flex"
-        >
-          <Icon name="whatsapp" className="h-4 w-4" />
-          {t.common.bookWhatsapp}
-        </a>
+        <div className="hidden items-center gap-2 md:flex">
+          <LanguageMenu />
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 rounded-full bg-teal px-4 py-2 text-[0.85rem] font-semibold text-white transition-colors hover:bg-teal-deep"
+          >
+            <Icon name="whatsapp" className="h-4 w-4" />
+            {t.common.bookWhatsapp}
+          </a>
+        </div>
       </div>
 
       {/* Menu mobile plein écran */}

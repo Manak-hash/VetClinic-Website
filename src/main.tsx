@@ -1,14 +1,17 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { I18nProvider, detectLocale } from './i18n'
+import { I18nProvider } from './i18n'
 import { routeForPath, isLocale, type Locale, type RouteId } from './i18n/config'
 import { usePath } from './router'
 import { Layout } from './components/Layout'
 
 /* ------------------------------------------------------------------ */
-/* Bootstrap : la racine EST la version FR (SEO local), pas de redirect */
-/* auto. detectLocale ne sert qu'au fallback si chemin inconnu.        */
+/* Bootstrap — la racine EST la version FR (SEO local).                */
+/* Redirection UNIQUEMENT depuis '/' et UNIQUEMENT si l'utilisateur a  */
+/* déjà choisi explicitement une autre langue (localStorage). Jamais   */
+/* pour la détection navigateur : les crawlers et les liens partagés   */
+/* ne doivent jamais être déportés.                                    */
 /* ------------------------------------------------------------------ */
 
 function storedLocale(): Locale | null {
@@ -18,6 +21,11 @@ function storedLocale(): Locale | null {
   } catch {
     return null
   }
+}
+
+// Redirect racine → choix stocké, AVANT le premier rendu (pas de flash)
+if (window.location.pathname === '/' && storedLocale() && storedLocale() !== 'fr') {
+  window.location.replace(`/${storedLocale()}/`)
 }
 
 function App() {
@@ -38,6 +46,3 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>,
 )
-
-// detectLocale reste exporté pour les tests — non utilisé au boot racine
-void detectLocale

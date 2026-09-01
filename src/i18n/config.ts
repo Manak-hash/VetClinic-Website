@@ -38,9 +38,11 @@ export type RouteId =
   | 'zoneAnfa'
   | 'notfound'
 
-/* Chemin par locale — le slug est traduit là où le SEO local le paie */
+/* Chemin par locale — le slug est traduit là où le SEO local le paie.
+   home : FR à la racine, les autres langues préfixées (sinon le pick
+   depuis '/' ne change pas l'URL et la locale retombe sur fr). */
 export const ROUTE_PATHS: Record<RouteId, Record<Locale, string>> = {
-  home: { fr: '/', en: '/', ru: '/', ar: '/' },
+  home: { fr: '/', en: '/en/', ru: '/ru/', ar: '/ar/' },
   services: { fr: '/services/', en: '/en/services/', ru: '/ru/services/', ar: '/ar/services/' },
   equipe: { fr: '/equipe/', en: '/en/team/', ru: '/ru/komanda/', ar: '/ar/equipe/' },
   faq: { fr: '/faq/', en: '/en/faq/', ru: '/ru/voprosy/', ar: '/ar/faq/' },
