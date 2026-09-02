@@ -129,6 +129,12 @@ const en: Messages = {
       'Pre-operative visit with a precise quote, aseptic preparation, anesthesia dosed to the gram, pain management. From spays and neuters to orthopedic surgery: the same standard of care, every time.',
     surgeryCta: 'See the full protocol',
     surgeryCaption: 'In the operating room — procedures performed at the clinic.',
+    reviews: {
+      kicker: 'Client reviews',
+      h2: 'Pet parents trust us with their own',
+      viewAll: 'See all 175 Google reviews',
+      basedOn: 'Rated 4.3 out of 5, based on 175 Google reviews',
+    },
     zonesKicker: 'Casablanca',
     zonesH2: 'Your veterinarian, wherever you live',
     faqKicker: 'Frequently asked questions',

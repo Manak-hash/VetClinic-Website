@@ -95,6 +95,7 @@ export interface Messages {
     surgeryP: string
     surgeryCta: string
     surgeryCaption: string
+    reviews: { kicker: string; h2: string; viewAll: string; basedOn: string }
     zonesKicker: string
     zonesH2: string
     faqKicker: string
@@ -326,6 +327,12 @@ const fr: Messages = {
       'Visite préopératoire avec devis précis, préparation aseptique, anesthésie dosée au gramme près, gestion de la douleur. Stérilisations comme chirurgies orthopédiques : même exigence.',
     surgeryCta: 'Voir le protocole complet',
     surgeryCaption: 'Au bloc opératoire — interventions suivies à la clinique.',
+    reviews: {
+      kicker: 'Avis clients',
+      h2: 'Ils nous confient leurs animaux',
+      viewAll: 'Voir les 175 avis Google',
+      basedOn: 'Note de 4,3 sur 5, basée sur 175 avis Google',
+    },
     zonesKicker: 'Casablanca',
     zonesH2: 'Votre vétérinaire, selon votre quartier',
     faqKicker: 'Questions fréquentes',

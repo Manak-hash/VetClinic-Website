@@ -1,6 +1,7 @@
 import { SITE_URL, pathFor, type Locale, type RouteId } from '../i18n/config'
 import type { Messages } from '../i18n'
 import { CLINIC } from '../data'
+import { RATING_VALUE, RATING_COUNT } from '../reviews'
 
 /* ------------------------------------------------------------------ */
 /* JSON-LD locale-aware — construits depuis les dictionnaires          */
@@ -48,6 +49,13 @@ export function localBusinessLd(t: Messages) {
       name: n,
     })),
     medicalSpecialty: 'VeterinaryCare',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: RATING_VALUE,
+      reviewCount: RATING_COUNT,
+      bestRating: 5,
+      worstRating: 1,
+    },
     availableService: Object.values(t.services.items).map((s) => ({
       '@type': 'MedicalProcedure',
       name: s.title,

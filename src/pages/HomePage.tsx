@@ -8,6 +8,7 @@ import { localBusinessLd, faqJsonLd } from '../components/jsonld'
 import { pathFor } from '../i18n/config'
 import { CLINIC, TEL_URGENCE, WA_LINK } from '../data'
 import { HeroTopFade } from '../components/HeroTopFade'
+import { ReviewsTeaser } from '../components/ReviewsTeaser'
 
 /* ------------------------------------------------------------------ */
 /* Accueil — condensé qui renvoie vers chaque page dédiée (traduit)    */
@@ -194,6 +195,14 @@ export function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Avis clients — extraits Google réels */}
+      <ReviewsTeaser
+        kicker={t.home.reviews.kicker}
+        h2={t.home.reviews.h2}
+        viewAll={t.home.reviews.viewAll}
+        basedOn={t.home.reviews.basedOn}
+      />
 
       {/* Zones */}
       <section className="section-pad mx-auto max-w-6xl py-20 md:py-28">

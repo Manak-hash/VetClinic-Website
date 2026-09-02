@@ -108,8 +108,36 @@ export function Icon({ name, className = 'h-5 w-5' }: { name: string; className?
     question: (
       <>
         <circle cx="12" cy="12" r="9" />
-        <path d="M9.5 9.3a2.5 2.5 0 1 1 3.4 2.3c-.7.3-.9.8-.9 1.6" />
-        <path d="M12 16.6v.01" />
+        <path d="M9.6 9.2a2.5 2.5 0 0 1 4.9.7c0 1.6-2.5 2.1-2.5 3.4" />
+        <path d="M12 16.8v.01" />
+      </>
+    ),
+    star: (
+      <path
+        fill="currentColor"
+        stroke="currentColor"
+        strokeLinejoin="round"
+        d="M12 3.2l2.65 5.37 5.93.86-4.29 4.18 1.01 5.9L12 16.68l-5.3 2.79 1.01-5.9-4.29-4.18 5.93-.86L12 3.2z"
+      />
+    ),
+    starEmpty: (
+      <path
+        strokeLinejoin="round"
+        d="M12 3.2l2.65 5.37 5.93.86-4.29 4.18 1.01 5.9L12 16.68l-5.3 2.79 1.01-5.9-4.29-4.18 5.93-.86L12 3.2z"
+      />
+    ),
+    starHalf: (
+      <>
+        <path
+          fill="currentColor"
+          stroke="currentColor"
+          strokeLinejoin="round"
+          d="M12 3.2l-5.29 11.03 5.29-2.79V3.2z"
+        />
+        <path
+          strokeLinejoin="round"
+          d="M12 3.2l2.65 5.37 5.93.86-4.29 4.18 1.01 5.9L12 16.68l-5.29 2.79 1.01-5.9-4.29-4.18 5.93-.86L12 3.2z"
+        />
       </>
     ),
     globe: (
