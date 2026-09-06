@@ -77,7 +77,7 @@ function Header() {
             <span className={`flex h-9 w-9 items-center justify-center rounded-xl transition-colors ${onDark ? 'bg-white/15 text-white' : 'bg-ink text-paper'}`}>
               <Icon name="paw" className="h-5 w-5" />
             </span>
-            <span className="font-display text-[1rem] font-semibold leading-tight tracking-tight">
+            <span className={`font-display text-[1rem] font-semibold leading-tight tracking-tight transition-colors duration-300 ${onDark ? 'text-white' : ''}`}>
               {t.common.headerLine1}
               <br />
               <span className={`${brandColor} transition-colors duration-300`}>{t.common.clinicNameShort}</span>
@@ -97,9 +97,9 @@ function Header() {
             </Link>
           ))}
         </nav>
-        {/* Langue — desktop et mobile, dans la barre */}
+        {/* Langue — desktop uniquement dans la barre (mobile : dans le menu) */}
         <div className="flex items-center gap-2">
-          <LanguageMenu onDark={onDark} />
+          <LanguageMenu onDark={onDark} desktopOnly />
           {/* Appel — mobile uniquement */}
           <a
             href={`tel:${TEL_CLINIC}`}
@@ -134,9 +134,11 @@ function Header() {
         </div>
       </div>
 
-      {/* Menu mobile — fond PAPER TOUJOURS (même en haut de page) */}
+      {/* Menu mobile — fond paper FORCÉ en inline style (aucune cascade
+          ne peut le rendre transparent, z-50 le place au-dessus de tout) */}
       <div
-        className={`fixed inset-x-0 bottom-0 top-16 z-50 bg-paper transition-all duration-300 md:hidden ${
+        style={{ backgroundColor: 'var(--color-paper)' }}
+        className={`fixed inset-x-0 bottom-0 top-16 z-50 transition-all duration-300 md:hidden ${
           open ? 'visible opacity-100' : 'invisible opacity-0'
         }`}
       >

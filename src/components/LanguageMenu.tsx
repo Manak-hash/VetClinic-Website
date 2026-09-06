@@ -11,7 +11,13 @@ import { Icon } from './Icon'
 /* l'option active (mesuré au layout, animé en CSS transform).         */
 /* ------------------------------------------------------------------ */
 
-export function LanguageMenu({ onDark = false }: { onDark?: boolean }) {
+export function LanguageMenu({
+  onDark = false,
+  desktopOnly = false,
+}: {
+  onDark?: boolean
+  desktopOnly?: boolean
+}) {
   const { locale, routeId } = useI18n()
   const [open, setOpen] = useState(false)
   const listRef = useRef<HTMLDivElement>(null)
@@ -54,7 +60,7 @@ export function LanguageMenu({ onDark = false }: { onDark?: boolean }) {
   }
 
   return (
-    <div className="relative" data-lang-menu>
+    <div className={`relative ${desktopOnly ? 'hidden md:block' : ''}`} data-lang-menu>
       {/* Pilule fermée : globe + code courant, cliquable pour ouvrir */}
       <button
         type="button"
