@@ -56,6 +56,28 @@ export function EquipePage() {
             </figcaption>
           </figure>
 
+          {/* Dr Bassir en action — photo réelle (soin/vaccination) */}
+          <figure className="reveal mt-10 overflow-hidden rounded-2xl border border-line shadow-card">
+            <img
+              src="/dr-bassir-providing-a-med-or-vacin.jpeg"
+              alt={t.equipe.actionCaption}
+              className="h-64 w-full object-cover sm:h-80"
+              loading="lazy"
+            />
+            <figcaption className="flex items-center justify-between gap-4 px-5 py-3.5 text-[0.85rem] text-ink-3">
+              <span>{t.equipe.actionCaption}</span>
+              <a
+                href={CLINIC.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex shrink-0 items-center gap-1.5 font-semibold text-teal hover:underline"
+              >
+                <Icon name="instagram" className="h-4 w-4" />
+                Instagram
+              </a>
+            </figcaption>
+          </figure>
+
           <div className="reveal mt-8 lg:mt-0">
             <p className="eyebrow">{t.equipe.whoKicker}</p>
             <h2 className="mt-3 font-display text-[clamp(1.6rem,3vw,2.2rem)] font-bold leading-tight tracking-tight">

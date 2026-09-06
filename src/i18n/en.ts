@@ -13,9 +13,9 @@ const en: Messages = {
         'Your veterinarian in Maârif, Casablanca: consultations for dogs, cats and exotic pets, surgery, imaging, emergencies. 60 Bd Bir Anzarane. Mon–Fri 9am – 7pm.',
     },
     services: {
-      title: 'Services — Consultations, surgery, imaging | Maârif Veterinary Clinic Casablanca',
+      title: 'Services — Consultations, surgery, laboratory, dentistry | Maârif Veterinary Clinic Casablanca',
       description:
-        'Dog, cat and exotic pet consultations, surgery with an upfront quote, X-rays, hospitalization, nutrition and emergency care in Maârif, Casablanca.',
+        'Consultations for dogs, cats and exotic pets, surgery, in-house laboratory, dentistry, ophthalmology, hospitalization, grooming, laser and emergencies in Maârif, Casablanca.',
     },
     equipe: {
       title: 'The team — Dr Bassir | Maârif Veterinary Clinic Casablanca',
@@ -147,7 +147,7 @@ const en: Messages = {
     heroKicker: 'Our services',
     heroH1: 'Everything your pet needs, under one roof',
     heroSub:
-      'Dogs, cats and exotic pets. Consultations, surgery, imaging, hospitalization and emergencies — in the heart of Maârif, on Boulevard Bir Anzarane.',
+      'Dogs, cats and exotic pets. Consultations, surgery, laboratory, dentistry, imaging, hospitalization, grooming, laser and emergencies — in the heart of Maârif, on Boulevard Bir Anzarane.',
     interiorCaption: 'Inside the clinic, Boulevard Bir Anzarane',
     findUs: 'Find us',
     surgeryKicker: 'Surgery',
@@ -161,6 +161,7 @@ const en: Messages = {
     interventionsTitle: 'Our most common procedures',
     aftercareTitle: 'After the procedure',
     photosCaption: 'In the operating room — procedures performed at the clinic.',
+    labCaption: 'In the analysis laboratory — panels run on site by Dr Bassir.',
     ctaTitle: 'A procedure in mind? Start with a message.',
     ctaP: 'Describe the situation on WhatsApp: Dr Bassir will tell you whether a pre-operative visit is needed and what it will include.',
     ctaLabel: 'Ask a surgery question',
@@ -227,6 +228,15 @@ const en: Messages = {
           'We welcome all pets — dogs, cats and exotic animals (rabbits, ferrets, rodents, hedgehogs…). Vaccination records, deworming, nutritional advice: your pet’s care is continuous, visit after visit.',
         ],
       },
+      vaccination: {
+        title: 'Vaccination',
+        short:
+          'Dog and cat vaccines on the Moroccan schedule, boosters tracked in the health record, reminders booked.',
+        body: [
+          'Vaccination protects your pet against serious contagious diseases: rabies, distemper, hepatitis, parvovirus, cat flu, feline leukemia. We build a schedule around your companion’s age and lifestyle.',
+          'Every injection goes into the vaccination record, and we track boosters with you — it’s also a document required by boarding kennels, travel and many countries.',
+        ],
+      },
       chirurgie: {
         title: 'Surgery',
         short:
@@ -244,6 +254,33 @@ const en: Messages = {
           'X-rays are taken on site, often the same day as the consultation, and explained to you.',
         ],
       },
+      laboratoire: {
+        title: 'In-house laboratory',
+        short:
+          'Blood work and full panels run on site: same-day results, nothing sent away.',
+        body: [
+          'Our integrated laboratory (BioMajestik analyzer) runs complete blood panels, differential counts and pre-anesthetic screens on site. Fast results mean treatment starts without waiting.',
+          'Pre-operative panels make every surgery safer: we check kidney and liver function before any anesthesia and adjust protocols for senior animals.',
+        ],
+      },
+      dentisterie: {
+        title: 'Dentistry',
+        short:
+          'Scaling, dental care and extractions: a healthy mouth means a pet that eats better and ages better.',
+        body: [
+          'Tartar and periodontal disease affect most pets over 3: bad breath, pain, infections that reach the heart and kidneys. We perform ultrasonic scaling, polishing and extractions when needed.',
+          'A dental check is offered at every consultation — the simplest way to act before pain sets in.',
+        ],
+      },
+      ophtalmologie: {
+        title: 'Ophthalmology',
+        short:
+          'Red eyes, tearing, cataracts: examination and treatment of common eye conditions.',
+        body: [
+          'Eyes are emergencies: conjunctivitis, a corneal ulcer or glaucoma can worsen within hours. We perform a full examination (fluorescein staining, pressure measurement) and start the right treatment.',
+          'Brachycephalic breeds (bulldogs, shih-tzus, Persians) are especially at risk: regular monitoring prevents emergencies.',
+        ],
+      },
       hospitalisation: {
         title: 'Hospitalization',
         short:
@@ -259,6 +296,33 @@ const en: Messages = {
           'Selected foods for all dogs and cats, including during illness or after surgery.',
         body: [
           'Diet has a direct impact on the health of the kidneys, liver and joints. We recommend and supply veterinary diets suited to every age and condition — including after surgery.',
+        ],
+      },
+      pharmacie: {
+        title: 'Pharmacy',
+        short:
+          'Veterinary medicines, antiparasitics and therapeutic food available directly at the clinic.',
+        body: [
+          'Our in-clinic pharmacy stocks the essential treatments: internal and external antiparasitics, antibiotics, anti-inflammatories, eye drops and therapeutic diets. You leave with the complete treatment the same day.',
+          'We give free advice on dosing and common mistakes — never give human medicine to a pet without guidance.',
+        ],
+      },
+      toilettage: {
+        title: 'Grooming & clipping',
+        short:
+          'Hygienic grooming and clipping, by a team your pets already know — handled gently.',
+        body: [
+          'Baths, clips, nail trims, ear and anal gland cleaning: grooming is done by the same familiar team your animals know — no unnecessary stress.',
+          'Grooming is also healthcare: skin and coat are checked at every visit, and problems (parasites, patches, lumps) are caught early.',
+        ],
+      },
+      laser: {
+        title: 'Laser therapy',
+        short:
+          'Therapeutic laser against pain and inflammation: joints, wounds, post-surgery recovery.',
+        body: [
+          'Therapeutic laser stimulates circulation and speeds tissue repair: relief for arthritis in senior dogs, wound healing, reduced inflammation after surgery.',
+          'Short, painless sessions with no sedation — animals relax during treatment. Protocols tailored to each indication.',
         ],
       },
       urgences: {
@@ -280,7 +344,7 @@ const en: Messages = {
     body1:
       'Established since 2002 on Rue Ahmed El Mejatti, the clinic moved in 2015 to 60, Boulevard Bir Anzarane, in central Casablanca — premises designed to welcome your pets in the best possible conditions.',
     body2:
-      'We care for all your pets: dogs, cats and exotic animals (rabbits, ferrets, rodents, hedgehogs…). Consultations, surgery, imaging, hospitalization: your pet’s care is continuous, visit after visit.',
+      'We care for all your pets: dogs, cats and exotic animals (rabbits, ferrets, rodents, hedgehogs…). Consultations, surgery, laboratory, dentistry: your pet’s care is continuous, visit after visit.',
     body3:
       'As for the team, the clinic deliberately stays small. You are welcomed by familiar faces, and Dr Bassir personally follows every surgical case from start to finish.',
     body4: 'We welcome our clients in four languages: Arabic, French, English and Russian.',
@@ -294,7 +358,7 @@ const en: Messages = {
       { title: 'Emergencies', sub: '06 61 49 26 18' },
     ],
     servicesCtaH: 'Our services',
-    servicesCtaP: 'Consultations, surgery, imaging, hospitalization — the details of every service.',
+    servicesCtaP: 'Consultations, surgery, laboratory, dentistry, ophthalmology, laser, grooming — the details of every service.',
     servicesCtaLabel: 'View services',
     rdvCtaH: 'Book an appointment',
     rdvCtaP: 'The simplest way: a WhatsApp message, or call the clinic at 05 22 23 30 95.',
@@ -303,6 +367,7 @@ const en: Messages = {
     phoneLabel: 'Phone',
     districtLabel: 'Maârif, Casablanca',
     directorCaption: 'Dr Bassir — Director',
+    actionCaption: 'Dr Bassir — administering a vaccine at the clinic.',
   },
 
   faq: {

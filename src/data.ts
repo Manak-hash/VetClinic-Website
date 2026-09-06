@@ -27,6 +27,7 @@ export const CLINIC = {
     'https://www.google.com/maps/search/?api=1&query=Clinique+V%C3%A9t%C3%A9rinaire+Maarif+60+Boulevard+Bir+Anzarane+Casablanca',
   reviewsLink:
     'https://maps.google.com/maps?cid=6748401890204772645&hl=fr',
+  instagram: 'https://www.instagram.com/clinique_veterinaire_maarif/',
 }
 
 export const TEL_CLINIC = `+212${CLINIC.phone.replace(/\s/g, '').replace(/^0/, '')}`

@@ -14,13 +14,34 @@ import { ReviewsTeaser } from '../components/ReviewsTeaser'
 /* Accueil — condensé qui renvoie vers chaque page dédiée (traduit)    */
 /* ------------------------------------------------------------------ */
 
-const SERVICE_KEYS = ['consultations', 'chirurgie', 'imagerie', 'hospitalisation', 'nutrition', 'urgences'] as const
+const SERVICE_KEYS = [
+  'consultations',
+  'vaccination',
+  'chirurgie',
+  'laboratoire',
+  'imagerie',
+  'dentisterie',
+  'ophtalmologie',
+  'hospitalisation',
+  'pharmacie',
+  'nutrition',
+  'toilettage',
+  'laser',
+  'urgences',
+] as const
 const SERVICE_ICONS: Record<(typeof SERVICE_KEYS)[number], string> = {
   consultations: 'stethoscope',
+  vaccination: 'syringe',
   chirurgie: 'scalpel',
+  laboratoire: 'flask',
   imagerie: 'xray',
+  dentisterie: 'tooth',
+  ophtalmologie: 'eye',
   hospitalisation: 'bed',
+  pharmacie: 'bowl',
   nutrition: 'bowl',
+  toilettage: 'scissors',
+  laser: 'zap',
   urgences: 'alert',
 }
 const ZONE_KEYS = [
@@ -52,6 +73,7 @@ export function HomePage() {
           <img
             src="/clinic-hero.jpg"
             alt={t.common.clinicName}
+            fetchPriority="high"
             className="h-full w-full object-cover"
           />
         </motion.div>

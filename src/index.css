@@ -51,7 +51,7 @@
   --color-paper-2: #efece6;
   --color-ink: #1c2b2e;
   --color-ink-2: #43555c;
-  --color-ink-3: #7d8b90;
+  --color-ink-3: #66757b;
   --color-teal: #2e6b74;
   --color-teal-deep: #21525a;
   --color-teal-soft: #e3edec;
@@ -238,34 +238,14 @@ body {
 }
 
 /* ------------------------------------------------------------------ */
-/* Sélecteur de langue — dropdown attaché à la barre (le "kiss")       */
+/* Sélecteur de langue — pilule animée, fond glissant mesuré en JS     */
 /* ------------------------------------------------------------------ */
 
-.lang-trigger {
-  position: relative;
-}
-/* La pilule garde sa forme ouverte/fermée — le panel flotte sous elle */
-.lang-panel {
-  transform-origin: top right;
-  transition-duration: 0.18s;
-  transition-timing-function: cubic-bezier(0.2, 0.8, 0.3, 1);
-  margin-top: 4px;
-  border-radius: 14px;
-  border-top: 1px solid var(--color-line);
-}
+/* RTL : le panneau s'ouvre vers la gauche */
 [dir='rtl'] .lang-panel {
-  transform-origin: top left;
   right: auto;
   left: 0;
-}
-/* Option sélectionnée : fond OPAQUE + texte contrasté (jamais fade) */
-.lang-option-active {
-  position: relative;
-  background: var(--color-teal-soft);
-  color: var(--color-teal-deep);
-}
-.lang-option-active .font-mono {
-  color: var(--color-teal);
+  transform-origin: top left;
 }
 
 /* ------------------------------------------------------------------ */

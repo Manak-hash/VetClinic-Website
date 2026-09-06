@@ -47,6 +47,10 @@ export function Seo({ routeId, title, description, jsonLd = [] }: SeoProps) {
     upsertMeta('property', 'og:type', 'website')
     upsertMeta('property', 'og:locale', LOCALE_META[locale].htmlLang.replace('-', '_'))
     upsertMeta('property', 'og:site_name', 'Clinique Vétérinaire Maârif')
+    upsertMeta('property', 'og:image', `${SITE_URL}/og-image.png`)
+    upsertMeta('property', 'og:image:width', '1200')
+    upsertMeta('property', 'og:image:height', '630')
+    upsertMeta('name', 'twitter:card', 'summary_large_image')
 
     // Canonical = la page DANS SA locale
     upsertLink('canonical', `${SITE_URL}${pathFor(routeId, locale)}`)

@@ -11,7 +11,7 @@ import { PageOutlet } from '../pages'
 import { CLINIC, TEL_CLINIC, TEL_URGENCE, WA_LINK } from '../data'
 
 /* ------------------------------------------------------------------ */
-/* Layout — nav/footer traduits, sélecteur de langue, barre urgence    */
+/* Layout — nav/footer traduits, sélecteur de langue, menu mobile      */
 /* ------------------------------------------------------------------ */
 
 const NAV_STRUCTURE = [
@@ -28,12 +28,13 @@ function Header() {
   const [open, setOpen] = useState(false)
   const path = usePath()
 
-  /* Option B : en haut de page, la nav est transparente sur un hero
-     sombre → teal clair (8.4:1). Scrollée → fond paper → teal foncé
-     (5.6:1). Toutes les pages ouvrent sur un hero bg-ink. */
-  const onDark = !scrolled
-  const brandColor = onDark ? 'text-[#8fd0c9]' : 'text-teal'
-  const linkIdle = onDark ? 'text-paper/85' : 'text-ink-2'
+  /* En haut de page, la nav est transparente sur un hero sombre →
+     marque + liens blancs (lisible sur n'importe quelle photo).
+     Scrollée → fond paper, textes ink. Menu ouvert → TOUJOURS blanc. */
+  const solid = scrolled || open
+  const onDark = !solid
+  const brandColor = onDark ? 'text-white' : 'text-teal'
+  const linkIdle = onDark ? 'text-white/90' : 'text-ink-2'
   const linkActive = onDark ? 'text-[#8fd0c9]' : 'text-teal'
   const linkHover = onDark ? 'hover:text-white' : 'hover:text-teal'
 
@@ -67,13 +68,13 @@ function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
-        scrolled ? 'bg-paper/95 shadow-[0_1px_0_0_var(--color-line)] backdrop-blur' : ''
+        solid ? 'bg-paper/95 shadow-[0_1px_0_0_var(--color-line)] backdrop-blur' : ''
       }`}
     >
       <div className="section-pad mx-auto flex h-16 max-w-6xl items-center justify-between gap-2">
         <Link to={pathFor('home', locale)}>
           <span className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-ink text-paper">
+            <span className={`flex h-9 w-9 items-center justify-center rounded-xl transition-colors ${onDark ? 'bg-white/15 text-white' : 'bg-ink text-paper'}`}>
               <Icon name="paw" className="h-5 w-5" />
             </span>
             <span className="font-display text-[1rem] font-semibold leading-tight tracking-tight">
@@ -96,12 +97,14 @@ function Header() {
             </Link>
           ))}
         </nav>
-        {/* Mobile : langues + appel + menu */}
-        <div className="flex items-center gap-2 md:hidden">
+        {/* Langue — desktop et mobile, dans la barre */}
+        <div className="flex items-center gap-2">
+          <LanguageMenu onDark={onDark} />
+          {/* Appel — mobile uniquement */}
           <a
             href={`tel:${TEL_CLINIC}`}
-            className={`flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur transition-colors ${
-              onDark ? 'border-paper/25 bg-white/10 text-paper hover:bg-white/20' : 'border-line bg-white/80 text-ink hover:bg-white'
+            className={`flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur transition-colors md:hidden ${
+              onDark ? 'border-white/30 bg-white/10 text-white hover:bg-white/20' : 'border-line bg-white/80 text-ink hover:bg-white'
             }`}
           >
             <Icon name="phone" className="h-4.5 w-4.5" />
@@ -112,19 +115,18 @@ function Header() {
             onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-label={open ? t.common.menuClose : t.common.menuOpen}
-            className={`flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur transition-colors ${
-              onDark ? 'border-paper/25 bg-white/10 text-paper hover:bg-white/20' : 'border-line bg-white/80 text-ink hover:bg-white'
+            className={`flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur transition-colors md:hidden ${
+              onDark ? 'border-white/30 bg-white/10 text-white hover:bg-white/20' : 'border-line bg-white/80 text-ink hover:bg-white'
             }`}
           >
             <Icon name={open ? 'close' : 'menu'} className="h-5 w-5" />
           </button>
-        </div>
-        <div className="hidden items-center gap-2 md:flex">
+          {/* WhatsApp — desktop uniquement */}
           <a
             href={WA_LINK}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 rounded-full bg-teal px-4 py-2 text-[0.85rem] font-semibold text-white transition-colors hover:bg-teal-deep"
+            className="hidden items-center gap-2 rounded-full bg-teal px-4 py-2 text-[0.85rem] font-semibold text-white transition-colors hover:bg-teal-deep md:flex"
           >
             <Icon name="whatsapp" className="h-4 w-4" />
             {t.common.bookWhatsapp}
@@ -132,36 +134,83 @@ function Header() {
         </div>
       </div>
 
-      {/* Menu mobile plein écran */}
+      {/* Menu mobile — fond PAPER TOUJOURS (même en haut de page) */}
       <div
-        className={`fixed inset-0 top-16 z-30 bg-paper transition-all duration-300 md:hidden ${
+        className={`fixed inset-x-0 bottom-0 top-16 z-50 bg-paper transition-all duration-300 md:hidden ${
           open ? 'visible opacity-100' : 'invisible opacity-0'
         }`}
       >
-        <nav className="section-pad mx-auto flex max-w-6xl flex-col gap-1 pt-6" aria-label="Menu mobile">
-          {NAV_ITEMS.map((n) => (
-            <Link
-              key={n.id}
-              to={n.to}
-              className={`rounded-xl px-4 py-4 font-display text-xl font-semibold tracking-tight ${
-                routeId === n.id ? 'bg-teal-soft text-teal' : 'text-ink'
-              }`}
+        <nav className="section-pad mx-auto flex h-full max-w-6xl flex-col pt-6" aria-label="Menu mobile">
+          <div className="flex flex-col gap-1">
+            {NAV_ITEMS.map((n) => (
+              <Link
+                key={n.id}
+                to={n.to}
+                className={`rounded-xl px-4 py-4 font-display text-xl font-semibold tracking-tight ${
+                  routeId === n.id ? 'bg-teal-soft text-teal' : 'text-ink'
+                }`}
+              >
+                {n.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Langues inline — finit le problème du sélecteur caché au footer */}
+          <div className="mt-6">
+            <p className="px-4 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-ink-3">
+              {t.common.languageLabel}
+            </p>
+            <div className="mt-2 flex flex-wrap gap-2 px-4">
+              {(['fr', 'en', 'ru', 'ar'] as const).map((code) => (
+                <MobileLangLink key={code} code={code} />
+              ))}
+            </div>
+          </div>
+
+          {/* Pied du menu — urgence + RDV toujours accessibles */}
+          <div className="mt-auto pb-6">
+            <a
+              href={`tel:${TEL_URGENCE}`}
+              className="flex items-center justify-center gap-2 rounded-xl bg-brick px-6 py-4 text-[0.95rem] font-bold text-white"
             >
-              {n.label}
-            </Link>
-          ))}
-          <a
-            href={WA_LINK}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 flex items-center justify-center gap-2 rounded-full bg-teal px-6 py-4 text-[0.95rem] font-semibold text-white"
-          >
-            <Icon name="whatsapp" className="h-5 w-5" />
-            {t.common.bookWhatsapp}
-          </a>
+              <Icon name="alert" className="h-4.5 w-4.5" />
+              {t.common.callUrgency} · {CLINIC.urgency}
+            </a>
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-teal px-6 py-4 text-[0.95rem] font-bold text-white"
+            >
+              <Icon name="whatsapp" className="h-4.5 w-4.5" />
+              {t.common.bookWhatsapp}
+            </a>
+          </div>
         </nav>
       </div>
     </header>
+  )
+}
+
+function MobileLangLink({ code }: { code: 'fr' | 'en' | 'ru' | 'ar' }) {
+  const { locale, routeId, t } = useI18n()
+  const active = locale === code
+  const meta = { fr: 'Français', en: 'English', ru: 'Русский', ar: 'العربية' }[code]
+  return (
+    <a
+      href={pathFor(routeId, code)}
+      aria-current={active ? 'true' : undefined}
+      onClick={() => {
+        // stocke le choix puis laisse le <a> naviguer (vraie ancre crawlable)
+        import('../i18n').then((m) => m.storeLocale(code))
+      }}
+      aria-label={`${t.common.languageMenu} : ${meta}`}
+      className={`rounded-full border px-4 py-2 text-[0.9rem] font-semibold transition-colors ${
+        active ? 'border-teal bg-teal-soft text-teal-deep' : 'border-line bg-white text-ink-2'
+      }`}
+    >
+      {meta}
+    </a>
   )
 }
 
@@ -176,7 +225,7 @@ function Footer() {
     { to: pathFor('zones', locale), label: t.nav.zones },
   ]
   return (
-    <footer className="section-pad bg-ink pb-28 pt-14 text-paper md:pb-14">
+    <footer className="section-pad bg-ink pb-14 pt-14 text-paper md:pb-14">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div>
@@ -207,14 +256,6 @@ function Footer() {
             ))}
           </nav>
 
-          {/* Langue */}
-          <div className="flex flex-col gap-3">
-            <p className="text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-paper/45">
-              {t.common.languageLabel}
-            </p>
-            <LanguageMenu onDark />
-          </div>
-
           <div className="flex flex-col gap-2.5 text-[0.92rem] text-paper/70">
             <a href={`tel:${TEL_CLINIC}`} className="transition-colors hover:text-paper">
               {CLINIC.phone}
@@ -232,6 +273,15 @@ function Footer() {
               className="transition-colors hover:text-paper"
             >
               {CLINIC.address.street} — {t.common.addressCity}
+            </a>
+            <a
+              href={CLINIC.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-paper"
+            >
+              <Icon name="instagram" className="h-4 w-4" />
+              Instagram
             </a>
           </div>
         </div>
@@ -257,42 +307,6 @@ function Footer() {
   )
 }
 
-function UrgenceBar() {
-  const { t } = useI18n()
-  const [shown, setShown] = useState(false)
-  useEffect(() => {
-    const timer = setTimeout(() => setShown(true), 400)
-    return () => clearTimeout(timer)
-  }, [])
-
-  return (
-    <div
-      className={`urgence-bar fixed inset-x-0 bottom-0 z-40 bg-paper/95 backdrop-blur md:hidden ${
-        shown ? 'shown' : ''
-      }`}
-    >
-      <div className="flex gap-2 p-3">
-        <a
-          href={`tel:${TEL_URGENCE}`}
-          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-brick py-3 text-[0.92rem] font-bold text-white"
-        >
-          <Icon name="alert" className="h-4.5 w-4.5" />
-          {t.common.callUrgency}
-        </a>
-        <a
-          href={WA_LINK}
-          target="_blank"
-          rel="noreferrer"
-          className="flex flex-[1.4] items-center justify-center gap-2 rounded-xl bg-teal py-3 text-[0.92rem] font-bold text-white"
-        >
-          <Icon name="whatsapp" className="h-4.5 w-4.5" />
-          {t.common.bookWhatsapp}
-        </a>
-      </div>
-    </div>
-  )
-}
-
 export function Layout() {
   useReveal()
   return (
@@ -303,7 +317,6 @@ export function Layout() {
         <PageOutlet />
       </main>
       <Footer />
-      <UrgenceBar />
     </>
   )
 }

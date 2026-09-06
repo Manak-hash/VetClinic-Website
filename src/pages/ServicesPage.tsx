@@ -12,13 +12,34 @@ import { WA_LINK } from '../data'
 /* Page Services — grille complète + détail chirurgie (protocole)      */
 /* ------------------------------------------------------------------ */
 
-const SERVICE_KEYS = ['consultations', 'chirurgie', 'imagerie', 'hospitalisation', 'nutrition', 'urgences'] as const
+const SERVICE_KEYS = [
+  'consultations',
+  'vaccination',
+  'chirurgie',
+  'laboratoire',
+  'imagerie',
+  'dentisterie',
+  'ophtalmologie',
+  'hospitalisation',
+  'pharmacie',
+  'nutrition',
+  'toilettage',
+  'laser',
+  'urgences',
+] as const
 const SERVICE_ICONS: Record<(typeof SERVICE_KEYS)[number], string> = {
   consultations: 'stethoscope',
+  vaccination: 'syringe',
   chirurgie: 'scalpel',
+  laboratoire: 'flask',
   imagerie: 'xray',
+  dentisterie: 'tooth',
+  ophtalmologie: 'eye',
   hospitalisation: 'bed',
+  pharmacie: 'bowl',
   nutrition: 'bowl',
+  toilettage: 'scissors',
+  laser: 'zap',
   urgences: 'alert',
 }
 
@@ -89,6 +110,23 @@ export function ServicesPage() {
             </Link>
           </figcaption>
         </figure>
+
+        {/* Laboratoire — analyseur sur place (photos réelles) */}
+        <div className="reveal mt-8 grid gap-3 sm:grid-cols-3">
+          {['/dr-bassir-in-lab-1.jpeg', '/dr-bassir-in-lab-2.jpeg', '/dr-bassir-in-lab-3.jpeg'].map(
+            (src) => (
+              <figure key={src} className="photo-card overflow-hidden rounded-xl">
+                <img
+                  src={src}
+                  alt={t.services.labCaption}
+                  className="aspect-[3/4] w-full object-cover"
+                  loading="lazy"
+                />
+              </figure>
+            ),
+          )}
+        </div>
+        <p className="reveal mt-3 text-[0.8rem] text-ink-3">{t.services.labCaption}</p>
       </section>
 
       <SurgeryDetail />

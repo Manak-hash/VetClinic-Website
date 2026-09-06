@@ -120,13 +120,29 @@ export interface Messages {
     interventionsTitle: string
     aftercareTitle: string
     photosCaption: string
+    labCaption: string
     ctaTitle: string
     ctaP: string
     ctaLabel: string
     interventionAreas: { area: string; items: string[] }[]
     aftercare: string[]
     protocol: ProtocolEntry[]
-    items: Record<'consultations' | 'chirurgie' | 'imagerie' | 'hospitalisation' | 'nutrition' | 'urgences', ServiceEntry>
+    items: Record<
+      | 'consultations'
+      | 'vaccination'
+      | 'chirurgie'
+      | 'laboratoire'
+      | 'imagerie'
+      | 'dentisterie'
+      | 'ophtalmologie'
+      | 'hospitalisation'
+      | 'pharmacie'
+      | 'nutrition'
+      | 'toilettage'
+      | 'laser'
+      | 'urgences',
+      ServiceEntry
+    >
   }
 
   equipe: {
@@ -153,6 +169,7 @@ export interface Messages {
     phoneLabel: string
     districtLabel: string
     directorCaption: string
+    actionCaption: string
   }
 
   faq: {
@@ -211,9 +228,9 @@ const fr: Messages = {
         'Votre vétérinaire au Maârif, Casablanca : consultations chiens/chats/NAC, chirurgie, imagerie, urgences. 60 Bd Bir Anzarane. Lun–ven 9h–19h.',
     },
     services: {
-      title: 'Services — Consultations, chirurgie, imagerie | Clinique Vétérinaire Maârif Casablanca',
+      title: 'Services — Consultations, chirurgie, laboratoire, dentisterie | Clinique Vétérinaire Maârif Casablanca',
       description:
-        "Consultations chiens, chats et NAC, chirurgie avec devis à l'avance, radiographie, hospitalisation, nutrition et urgences au Maârif, Casablanca.",
+        "Consultations chiens, chats et NAC, chirurgie, laboratoire d'analyses, dentisterie, ophtalmologie, hospitalisation, toilettage, laser et urgences au Maârif, Casablanca.",
     },
     equipe: {
       title: "L'équipe — Dr Bassir | Clinique Vétérinaire Maârif Casablanca",
@@ -345,7 +362,7 @@ const fr: Messages = {
     heroKicker: 'Nos services',
     heroH1: 'Tout ce dont votre animal a besoin, sous un seul toit',
     heroSub:
-      'Chiens, chats et NAC. Consultations, chirurgie, imagerie, hospitalisation et urgences — au cœur du Maârif, sur le boulevard Bir Anzarane.',
+      'Chiens, chats et NAC. Consultations, chirurgie, laboratoire, dentisterie, imagerie, hospitalisation, toilettage, laser et urgences — au cœur du Maârif, sur le boulevard Bir Anzarane.',
     interiorCaption: 'Les locaux de la clinique, boulevard Bir Anzarane',
     findUs: 'Nous trouver',
     surgeryKicker: 'Chirurgie',
@@ -359,6 +376,7 @@ const fr: Messages = {
     interventionsTitle: 'Interventions les plus fréquentes',
     aftercareTitle: 'Après l’intervention',
     photosCaption: 'Au bloc opératoire — interventions suivies à la clinique.',
+    labCaption: 'Au laboratoire d’analyses — bilans réalisés sur place par Dr Bassir.',
     ctaTitle: 'Une intervention en tête ? Commencez par un message.',
     ctaP: 'Décrivez la situation sur WhatsApp : le Dr Bassir vous indique si une visite préopératoire est nécessaire et ce qu’elle comprendra.',
     ctaLabel: 'Poser une question chirurgie',
@@ -425,6 +443,15 @@ const fr: Messages = {
           'Nous recevons tous les animaux domestiques — chiens, chats et NAC (lapins, furets, rongeurs, hérissons…). Carnet de vaccination, vermifuges, conseil en nutrition : le suivi de votre animal est assuré dans la continuité, visite après visite.',
         ],
       },
+      vaccination: {
+        title: 'Vaccination',
+        short:
+          'Vaccins chiens et chats selon le calendrier marocain, rappels tracés dans le carnet, rappels de rendez-vous.',
+        body: [
+          'La vaccination protège votre animal contre les maladies graves et contagieuses : rage, carré, hépatite, parvovirose, coryza, leucose féline. Nous établissons un calendrier adapté à l’âge et au mode de vie de votre compagnon.',
+          'Chaque injection est inscrite au carnet de vaccination, et nous suivons les rappels avec vous — c’est aussi un document exigé par les pensions, les voyages et certains pays.',
+        ],
+      },
       chirurgie: {
         title: 'Chirurgie',
         short:
@@ -442,6 +469,33 @@ const fr: Messages = {
           'Les clichés sont réalisés sur place, souvent le jour même de la consultation, et vous sont expliqués.',
         ],
       },
+      laboratoire: {
+        title: 'Laboratoire d’analyses',
+        short:
+          'Analyses sanguines et bilans réalisés sur place : résultats le jour même, sans envoi en extérieur.',
+        body: [
+          'Notre laboratoire intégré (analyseur BioMajestik) réalise les bilans sanguins complets, numérations formules et contrôles pré-anesthésiques sur place. Un résultat rapide, c’est un traitement qui démarre sans attendre.',
+          'Les bilans pré-opératoires sécurisent chaque chirurgie : nous vérifions la fonction rénale et hépatique avant toute anesthésie, et nous adaptons les protocoles aux animaux âgés.',
+        ],
+      },
+      dentisterie: {
+        title: 'Dentisterie',
+        short:
+          'Détartrage, soins dentaires et extraction : une bouche saine, c’est un animal qui mange mieux et vieillit mieux.',
+        body: [
+          'Le tartre et la maladie parodontale touchent la majorité des animaux de plus de 3 ans : mauvaise haleine, douleur, infections qui gagnent le cœur et les reins. Nous réalisons détartrage ultrasons, polissage et extractions quand nécessaire.',
+          'Un contrôle dentaire est proposé à chaque consultation — c’est le moyen le plus simple d’intervenir avant que la douleur ne s’installe.',
+        ],
+      },
+      ophtalmologie: {
+        title: 'Ophtalmologie',
+        short:
+          'Yeux rouges, larmoiements, cataracte : examen et traitement des affections oculaires courantes.',
+        body: [
+          'Les yeux sont urgents : une conjonctivite, une ulcération cornéenne ou un glaucome peuvent évoluer en quelques heures. Nous réalisons l’examen complet (coloration à la fluorescéine, mesure de la pression) et le traitement adapté.',
+          'Les races brachycéphales (bouledogues, shih-tzu, persans) sont particulièrement à risque : un suivi régulier évite les urgences.',
+        ],
+      },
       hospitalisation: {
         title: 'Hospitalisation',
         short:
@@ -457,6 +511,33 @@ const fr: Messages = {
           'Aliments sélectionnés pour tous les chiens et chats, y compris en cas de maladie ou après une intervention.',
         body: [
           'L’alimentation joue un rôle direct sur la santé du rein, du foie et des articulations. Nous recommandons et fournissons des aliments vétérinaires adaptés à chaque âge et à chaque pathologie — y compris après une intervention chirurgicale.',
+        ],
+      },
+      pharmacie: {
+        title: 'Pharmacie',
+        short:
+          'Médicaments vétérinaires, antiparasitaires et croquettes thérapeutiques disponibles directement à la clinique.',
+        body: [
+          'Notre pharmacie vétérinaire stocke les traitements essentiels : antiparasitaires internes et externes, antibiotiques, anti-inflammatoires, solutions ophtalmiques et croquettes thérapeutiques. Vous repartez avec le traitement complet le jour même.',
+          'Nous conseillons gratuitement sur les posologies et les pièges à éviter — jamais de médicament humain donné à l’aveugle.',
+        ],
+      },
+      toilettage: {
+        title: 'Toilettage & coupe',
+        short:
+          'Toilettage hygiénique et coupe aux ciseaux ou à la tondeuse, par une équipe qui manipule en douceur.',
+        body: [
+          'Bains, tontes, coupe des griffes, nettoyage des oreilles et des glandes anales : le toilettage est assuré par une équipe habituelle que vos animaux connaissent — pas de stress inutile.',
+          'Le toilettage est aussi un acte de santé : la peau et le pelage sont contrôlés à chaque passage, et les problèmes (parasites, plaques, nodules) sont repérés tôt.',
+        ],
+      },
+      laser: {
+        title: 'Laserthérapie',
+        short:
+          'Laser thérapeutique contre la douleur et l’inflammation : articulations, plaies, post-opératoire.',
+        body: [
+          'Le laser thérapeutique stimule la circulation et accélère la réparation des tissus : soulagement de l’arthrose du chien âgé, cicatrisation des plaies, réduction de l’inflammation après chirurgie.',
+          'Séances courtes, indolores, sans sédation — les animaux se détendent pendant la séance. Protocoles adaptés selon l’indication.',
         ],
       },
       urgences: {
@@ -478,7 +559,7 @@ const fr: Messages = {
     body1:
       'Installée depuis 2002 rue Ahmed El Mejatti, la clinique a déménagé en 2015 au 60, boulevard Bir Anzarane, au centre de Casablanca — des locaux pensés pour accueillir vos animaux dans les meilleures conditions.',
     body2:
-      'Nous prenons soin de tous vos animaux domestiques : chiens, chats et NAC (lapins, furets, rongeurs, hérissons…). Consultations, chirurgie, imagerie, hospitalisation : le suivi de votre animal est assuré dans la continuité, visite après visite.',
+      'Nous prenons soin de tous vos animaux domestiques : chiens, chats et NAC (lapins, furets, rongeurs, hérissons…). Consultations, chirurgie, laboratoire, dentisterie : le suivi de votre animal est assuré dans la continuité, visite après visite.',
     body3:
       'Côté équipe, la clinique fonctionne en petit comité — c’est un choix. Vous êtes reçu par des visages connus, et le Dr Bassir suit personnellement les dossiers chirurgicaux du début à la fin.',
     body4: 'Nous accueillons nos clients en quatre langues : arabe, français, anglais et russe.',
@@ -492,7 +573,7 @@ const fr: Messages = {
       { title: 'Urgences', sub: '06 61 49 26 18' },
     ],
     servicesCtaH: 'Nos services',
-    servicesCtaP: 'Consultations, chirurgie, imagerie, hospitalisation — le détail de chaque service.',
+    servicesCtaP: 'Consultations, chirurgie, laboratoire, dentisterie, ophtalmologie, laser, toilettage… — le détail de chaque service.',
     servicesCtaLabel: 'Voir les services',
     rdvCtaH: 'Prendre rendez-vous',
     rdvCtaP: 'Le plus simple : un message WhatsApp, ou appelez la clinique au 05 22 23 30 95.',
@@ -501,6 +582,7 @@ const fr: Messages = {
     phoneLabel: 'Téléphone',
     districtLabel: 'Maârif, Casablanca',
     directorCaption: 'Dr Bassir — Directeur',
+    actionCaption: 'Dr Bassir — vaccination sur place à la clinique.',
   },
 
   faq: {
