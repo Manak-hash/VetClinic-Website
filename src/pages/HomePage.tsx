@@ -7,6 +7,8 @@ import { pathFor } from '../i18n/config'
 import { CLINIC, TEL_URGENCE, WA_LINK } from '../data'
 import { HeroTopFade } from '../components/HeroTopFade'
 import { ReviewsTeaser } from '../components/ReviewsTeaser'
+import { ResponsiveImg } from '../components/ResponsiveImg'
+import { IMG_WIDTHS } from '../components/img-widths'
 
 /* ------------------------------------------------------------------ */
 /* Accueil — condensé qui renvoie vers chaque page dédiée (traduit)    */
@@ -49,9 +51,13 @@ export function HomePage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink">
-        <img
+        <ResponsiveImg
+          base="clinic-hero"
           src="/clinic-hero.jpg"
           alt={t.common.clinicName}
+          widths={IMG_WIDTHS['clinic-hero']}
+          sizes="100vw"
+          loading="eager"
           fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -101,10 +107,12 @@ export function HomePage() {
       <section className="section-pad mx-auto max-w-6xl py-20 md:py-24">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <figure className="reveal photo-card overflow-hidden rounded-2xl">
-            <img
+            <ResponsiveImg
+              base="dr-bassir-with-a-dog"
               src="/dr-bassir-with-a-dog.jpeg"
               alt={t.home.doctorPhotoAlt}
-              loading="lazy"
+              widths={IMG_WIDTHS['dr-bassir-with-a-dog']}
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="aspect-square w-full object-cover"
             />
           </figure>
@@ -206,16 +214,18 @@ export function HomePage() {
             </div>
             <div className="reveal grid grid-cols-3 gap-3">
               {[
-                { src: '/surgery-1.jpg', alt: t.home.surgeryAlt1 },
-                { src: '/surgery-2.jpg', alt: t.home.surgeryAlt2 },
-                { src: '/surgery-3.jpg', alt: t.home.surgeryAlt3 },
-              ].map(({ src, alt }, i) => (
-                <figure key={src} className={`photo-card overflow-hidden rounded-xl ${i === 1 ? 'mt-6' : ''}`}>
-                  <img
+                { base: 'surgery-1', src: '/surgery-1.jpg', alt: t.home.surgeryAlt1 },
+                { base: 'surgery-2', src: '/surgery-2.jpg', alt: t.home.surgeryAlt2 },
+                { base: 'surgery-3', src: '/surgery-3.jpg', alt: t.home.surgeryAlt3 },
+              ].map(({ base, src, alt }, i) => (
+                <figure key={base} className={`photo-card overflow-hidden rounded-xl ${i === 1 ? 'mt-6' : ''}`}>
+                  <ResponsiveImg
+                    base={base}
                     src={src}
                     alt={alt}
+                    widths={IMG_WIDTHS[base as keyof typeof IMG_WIDTHS]}
+                    sizes="(max-width: 640px) 33vw, (max-width: 1024px) 30vw, 15vw"
                     className="aspect-[3/4] w-full object-cover"
-                    loading="lazy"
                   />
                 </figure>
               ))}

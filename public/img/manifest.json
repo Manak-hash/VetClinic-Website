@@ -1,0 +1,86 @@
+{
+  "clinic-hero": {
+    "widths": [
+      640,
+      960,
+      1280,
+      1600
+    ],
+    "format": "avif",
+    "fallback": "/img/clinic-hero.jpg"
+  },
+  "dr-bassir-with-a-dog": {
+    "widths": [
+      480,
+      640
+    ],
+    "format": "avif",
+    "fallback": "/img/dr-bassir-with-a-dog.jpg"
+  },
+  "clinic-interior": {
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "format": "avif",
+    "fallback": "/img/clinic-interior.jpg"
+  },
+  "dr-bassir": {
+    "widths": [
+      480,
+      640
+    ],
+    "format": "avif",
+    "fallback": "/img/dr-bassir.jpg"
+  },
+  "dr-bassir-providing-a-med-or-vacin": {
+    "widths": [
+      480,
+      640,
+      960
+    ],
+    "format": "avif",
+    "fallback": "/img/dr-bassir-providing-a-med-or-vacin.jpg"
+  },
+  "surgery-1": {
+    "widths": [
+      480,
+      640
+    ],
+    "format": "avif",
+    "fallback": "/img/surgery-1.jpg"
+  },
+  "surgery-2": {
+    "widths": [
+      480,
+      640
+    ],
+    "format": "avif",
+    "fallback": "/img/surgery-2.jpg"
+  },
+  "surgery-3": {
+    "widths": [
+      480,
+      640
+    ],
+    "format": "avif",
+    "fallback": "/img/surgery-3.jpg"
+  },
+  "xray-leg": {
+    "widths": [
+      480,
+      640
+    ],
+    "format": "avif",
+    "fallback": "/img/xray-leg.jpg"
+  },
+  "xray-unidentified": {
+    "widths": [
+      480,
+      640
+    ],
+    "format": "avif",
+    "fallback": "/img/xray-unidentified.jpg"
+  }
+}
