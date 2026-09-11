@@ -582,9 +582,9 @@ const fr: Messages = {
       'Nous prenons soin de tous vos animaux domestiques : chiens, chats et NAC (lapins, furets, rongeurs, hérissons…). Consultations, chirurgie, laboratoire, dentisterie : le suivi de votre animal est assuré dans la continuité, visite après visite.',
     body3:
       'Côté équipe, la clinique fonctionne en petit comité — c’est un choix. Vous êtes reçu par des visages connus, et le Dr Bassir suit personnellement les dossiers chirurgicaux du début à la fin.',
-    body4: 'Nous accueillons nos clients en quatre langues : arabe, français, anglais et russe.',
+    body4: 'Nous accueillons nos clients en cinq langues : arabe, français, anglais, russe et espagnol.',
     languagesH2: 'On parle votre langue',
-    languagesP: 'Toute l’équipe accueille et soigne en quatre langues — en consultation comme au téléphone.',
+    languagesP: 'Toute l’équipe accueille et soigne en cinq langues — en consultation comme au téléphone.',
     inPractice: 'La clinique en pratique',
     facts: [
       { title: 'Lun – Ven', sub: '9h – 19h · sam. 9h – 14h' },
@@ -643,7 +643,7 @@ const fr: Messages = {
       },
       {
         q: 'Parlez-vous d’autres langues ?',
-        a: 'Oui. À la clinique, nous parlons quatre langues : arabe, français, anglais et russe. Vous êtes accueilli dans la langue qui vous convient.',
+        a: 'Oui. À la clinique, nous parlons cinq langues : arabe, français, anglais, russe et espagnol. Vous êtes accueilli dans la langue qui vous convient.',
       },
     ],
   },

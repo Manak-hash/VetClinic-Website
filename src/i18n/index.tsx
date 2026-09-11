@@ -4,8 +4,9 @@ import fr, { type Messages } from './fr'
 import en from './en'
 import ru from './ru'
 import ar from './ar'
+import es from './es'
 
-const MESSAGES: Record<Locale, Messages> = { fr, en, ru, ar }
+const MESSAGES: Record<Locale, Messages> = { fr, en, ru, ar, es }
 
 /* ------------------------------------------------------------------ */
 /* Détection : préfixe chemin > choix stocké > langues du navigateur   */

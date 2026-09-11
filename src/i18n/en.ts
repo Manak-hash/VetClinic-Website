@@ -358,9 +358,9 @@ const en: Messages = {
       'We care for all your pets: dogs, cats and exotic animals (rabbits, ferrets, rodents, hedgehogs…). Consultations, surgery, laboratory, dentistry: your pet’s care is continuous, visit after visit.',
     body3:
       'As for the team, the clinic deliberately stays small. You are welcomed by familiar faces, and Dr Bassir personally follows every surgical case from start to finish.',
-    body4: 'We welcome our clients in four languages: Arabic, French, English and Russian.',
+    body4: 'We welcome our clients in five languages: Arabic, French, English, Russian and Spanish.',
     languagesH2: 'We speak your language',
-    languagesP: 'The whole team welcomes and treats pets in four languages — in consultations and on the phone alike.',
+    languagesP: 'The whole team welcomes and treats pets in five languages — in consultations and on the phone alike.',
     inPractice: 'The clinic in practice',
     facts: [
       { title: 'Mon – Fri', sub: '9am – 7pm · Sat 9am – 2pm' },
@@ -419,7 +419,7 @@ const en: Messages = {
       },
       {
         q: 'Do you speak other languages?',
-        a: 'Yes. At the clinic, we speak four languages: Arabic, French, English and Russian. You will be welcomed in whichever language suits you.',
+        a: 'Yes. At the clinic, we speak five languages: Arabic, French, English, Russian and Spanish. You will be welcomed in whichever language suits you.',
       },
     ],
   },

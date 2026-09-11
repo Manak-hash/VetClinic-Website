@@ -33,6 +33,7 @@ const LANG_NATIVE: Record<(typeof LOCALES)[number], string> = {
   en: 'English',
   ru: 'Русский',
   ar: 'العربية',
+  es: 'Español',
 }
 
 function Header({
