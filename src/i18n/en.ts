@@ -129,6 +129,17 @@ const en: Messages = {
       'Pre-operative visit with a precise quote, aseptic preparation, anesthesia dosed to the gram, pain management. From spays and neuters to orthopedic surgery: the same standard of care, every time.',
     surgeryCta: 'See the full protocol',
     surgeryCaption: 'In the operating room — procedures performed at the clinic.',
+    surgeryAlt1: 'Aseptic preparation of the surgical field in the clinic’s operating room.',
+    surgeryAlt2: 'Dr Bassir in surgery, sterile instrumentation in the operating room.',
+    surgeryAlt3: 'Post-operative monitoring of an animal under anesthesia.',
+    doctorKicker: 'Your veterinarian',
+    doctorH2: 'The veterinarian your neighborhood already knows',
+    doctorQuote:
+      '“Healthy animals for a better world”',
+    doctorByline: 'Dr Adib Bassir — Veterinary surgeon, clinic director.',
+    doctorCta: 'Meet the team',
+    doctorPhotoAlt:
+      'Dr Bassir in front of the Clinique Vétérinaire Maârif, with a golden retriever by his side.',
     reviews: {
       kicker: 'Client reviews',
       h2: 'Pet parents trust us with their own',

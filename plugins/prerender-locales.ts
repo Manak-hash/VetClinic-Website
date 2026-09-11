@@ -143,6 +143,9 @@ function buildShell(
   let html = base
     // lang + dir sur <html>
     .replace(/<html lang="[^"]*"[^>]*>/, `<html lang="${lang}" dir="${localeMeta[locale].dir}">`)
+    // Preload du hero : utile uniquement sur la home FR — sinon Chrome log
+    // « preloaded but not used » sur toutes les autres routes (Bug Lighthouse).
+    .replace(/<link rel="preload" as="image"[^>]*\/>/, path === '/' ? '$&' : '')
     // canonical self-referencing (inexistant dans index.html source → injecté avant </head>)
     .replace('</head>', `<link rel="canonical" href="${siteUrl}${path}">${hreflangBlock}\n  </head>`)
   // OG locale

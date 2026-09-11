@@ -1,5 +1,3 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
 import { Icon } from '../components/Icon'
 import { Seo } from '../components/Seo'
 import { Link } from '../components/Link'
@@ -16,32 +14,18 @@ import { ReviewsTeaser } from '../components/ReviewsTeaser'
 
 const SERVICE_KEYS = [
   'consultations',
-  'vaccination',
   'chirurgie',
-  'laboratoire',
   'imagerie',
-  'dentisterie',
-  'ophtalmologie',
-  'hospitalisation',
-  'pharmacie',
-  'nutrition',
-  'toilettage',
-  'laser',
+  'laboratoire',
+  'vaccination',
   'urgences',
 ] as const
 const SERVICE_ICONS: Record<(typeof SERVICE_KEYS)[number], string> = {
   consultations: 'stethoscope',
-  vaccination: 'syringe',
   chirurgie: 'scalpel',
-  laboratoire: 'flask',
   imagerie: 'xray',
-  dentisterie: 'tooth',
-  ophtalmologie: 'eye',
-  hospitalisation: 'bed',
-  pharmacie: 'bowl',
-  nutrition: 'bowl',
-  toilettage: 'scissors',
-  laser: 'zap',
+  laboratoire: 'flask',
+  vaccination: 'syringe',
   urgences: 'alert',
 }
 const ZONE_KEYS = [
@@ -52,10 +36,6 @@ const ZONE_KEYS = [
 
 export function HomePage() {
   const { t, locale, routeId } = useI18n()
-  const heroRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '18%'])
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08])
   const meta = t.meta.home
 
   return (
@@ -68,49 +48,33 @@ export function HomePage() {
       />
 
       {/* Hero */}
-      <section ref={heroRef} className="relative overflow-hidden bg-ink">
-        <motion.div style={{ y, scale }} className="absolute inset-0">
-          <img
-            src="/clinic-hero.jpg"
-            alt={t.common.clinicName}
-            fetchPriority="high"
-            className="h-full w-full object-cover"
-          />
-        </motion.div>
+      <section className="relative overflow-hidden bg-ink">
+        <img
+          src="/clinic-hero.jpg"
+          alt={t.common.clinicName}
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-linear-to-b from-ink/70 via-ink/35 to-ink/85" />
         <HeroTopFade />
 
-        <div className="section-pad relative mx-auto flex min-h-[92svh] max-w-6xl flex-col justify-end pb-16 pt-28">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="eyebrow text-[#8fd0c9]!"
-          >
+        <div className="section-pad relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end pb-16 pt-28">
+          <p className="eyebrow text-[#8fd0c9]!">
             {t.home.eyebrow}
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.22 }}
+          </p>
+          <h1
             className="mt-3 max-w-3xl font-display text-[clamp(2.4rem,6vw,4.3rem)] font-bold leading-[1.04] tracking-tight text-paper"
           >
             {t.home.h1a}
             <br />
             <span className="text-[#8fd0c9]">{t.home.h1b}</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.36 }}
+          </h1>
+          <p
             className="mt-5 max-w-xl text-[1.06rem] leading-relaxed text-paper/85"
           >
             {t.home.sub}
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
+          </p>
+          <div
             className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
           >
             <a
@@ -129,21 +93,59 @@ export function HomePage() {
               <Icon name="phone" className="h-4.5 w-4.5" />
               {t.common.callUrgency} · {CLINIC.urgency}
             </a>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Bandeau confiance */}
-      <div className="border-b border-line bg-paper-2/60">
-        <div className="section-pad mx-auto grid max-w-6xl grid-cols-2 gap-y-6 py-8 sm:grid-cols-4">
-          {t.home.trust.map((s) => (
-            <div key={s.small} className="text-center sm:text-left">
-              <p className="font-display text-2xl font-bold tracking-tight text-ink">{s.big}</p>
-              <p className="mt-0.5 text-[0.85rem] text-ink-3">{s.small}</p>
+      {/* Votre vétérinaire — confiance (compteurs intégrés) */}
+      <section className="section-pad mx-auto max-w-6xl py-20 md:py-24">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <figure className="reveal photo-card overflow-hidden rounded-2xl">
+            <img
+              src="/dr-bassir-with-a-dog.jpeg"
+              alt={t.home.doctorPhotoAlt}
+              loading="lazy"
+              className="aspect-square w-full object-cover"
+            />
+          </figure>
+          <div className="reveal">
+            <p className="eyebrow">{t.home.doctorKicker}</p>
+            <h2 className="mt-3 font-display text-[clamp(1.8rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight">
+              {t.home.doctorH2}
+            </h2>
+            <blockquote className="mt-5 border-l-2 border-teal pl-5 font-display text-[1.15rem] font-medium leading-relaxed tracking-tight text-ink-2">
+              {t.home.doctorQuote}
+            </blockquote>
+            <p className="mt-3 text-[0.9rem] text-ink-3">{t.home.doctorByline}</p>
+            <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6">
+              {t.home.trust.map((s) => (
+                <div key={s.small}>
+                  <p className="font-display text-[1.35rem] font-bold tracking-tight text-ink">{s.big}</p>
+                  <p className="mt-0.5 text-[0.85rem] text-ink-3">{s.small}</p>
+                </div>
+              ))}
             </div>
-          ))}
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={WA_LINK}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-3.5 text-[0.95rem] font-semibold text-paper transition-colors hover:bg-teal-deep"
+              >
+                <Icon name="whatsapp" className="h-5 w-5 text-[#8fd0c9]" />
+                {t.common.bookWhatsapp}
+              </a>
+              <Link
+                to={pathFor('equipe', locale)}
+                className="group inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-6 py-3.5 text-[0.95rem] font-semibold text-ink transition-colors hover:border-teal"
+              >
+                {t.home.doctorCta}
+                <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Services */}
       <section className="section-pad mx-auto max-w-6xl py-20 md:py-28">
@@ -203,11 +205,15 @@ export function HomePage() {
               </Link>
             </div>
             <div className="reveal grid grid-cols-3 gap-3">
-              {['/surgery-1.jpg', '/surgery-2.jpg', '/surgery-3.jpg'].map((src, i) => (
+              {[
+                { src: '/surgery-1.jpg', alt: t.home.surgeryAlt1 },
+                { src: '/surgery-2.jpg', alt: t.home.surgeryAlt2 },
+                { src: '/surgery-3.jpg', alt: t.home.surgeryAlt3 },
+              ].map(({ src, alt }, i) => (
                 <figure key={src} className={`photo-card overflow-hidden rounded-xl ${i === 1 ? 'mt-6' : ''}`}>
                   <img
                     src={src}
-                    alt={t.home.surgeryCaption}
+                    alt={alt}
                     className="aspect-[3/4] w-full object-cover"
                     loading="lazy"
                   />

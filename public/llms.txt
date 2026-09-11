@@ -1,0 +1,25 @@
+# Clinique Vétérinaire Maârif
+
+Veterinary clinic in the Maârif district of Casablanca, Morocco. Small-animal care since 2002: dogs, cats and NAC (exotic pets).
+
+- Phone: +212 5 22 23 30 95
+- Emergency line (7/7): +212 6 61 49 26 18
+- WhatsApp: https://wa.me/212661492618
+- Email: vetclinicmaarif@gmail.com
+- Address: 60, Boulevard Bir Anzarane, Maârif, Casablanca 20330, Morocco
+- Hours: Monday-Friday 9:00-19:00, Saturday 9:00-14:00
+- Languages: Arabic, French, English, Russian
+- Google Maps: https://www.google.com/maps/search/?api=1&query=Clinique+Veterinaire+Maarif+60+Boulevard+Bir+Anzarane+Casablanca
+
+## Services
+
+Consultations, vaccination, surgery, laboratory, imaging (X-ray), dentistry, ophthalmology, hospitalization, pharmacy, nutrition, grooming, laser therapy, emergency care.
+
+## Pages
+
+- Home: https://vetclinic-website.okhowazaki.workers.dev/
+- Services: https://vetclinic-website.okhowazaki.workers.dev/services/
+- Team: https://vetclinic-website.okhowazaki.workers.dev/equipe/
+- FAQ: https://vetclinic-website.okhowazaki.workers.dev/faq/
+- Contact: https://vetclinic-website.okhowazaki.workers.dev/contact/
+- Areas served: https://vetclinic-website.okhowazaki.workers.dev/zones/

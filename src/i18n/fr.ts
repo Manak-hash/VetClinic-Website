@@ -95,6 +95,15 @@ export interface Messages {
     surgeryP: string
     surgeryCta: string
     surgeryCaption: string
+    surgeryAlt1: string
+    surgeryAlt2: string
+    surgeryAlt3: string
+    doctorKicker: string
+    doctorH2: string
+    doctorQuote: string
+    doctorByline: string
+    doctorCta: string
+    doctorPhotoAlt: string
     reviews: { kicker: string; h2: string; viewAll: string; basedOn: string }
     zonesKicker: string
     zonesH2: string
@@ -344,6 +353,17 @@ const fr: Messages = {
       'Visite préopératoire avec devis précis, préparation aseptique, anesthésie dosée au gramme près, gestion de la douleur. Stérilisations comme chirurgies orthopédiques : même exigence.',
     surgeryCta: 'Voir le protocole complet',
     surgeryCaption: 'Au bloc opératoire — interventions suivies à la clinique.',
+    surgeryAlt1: 'Préparation aseptique du champ opératoire au bloc de la clinique.',
+    surgeryAlt2: 'Dr Bassir en intervention, instrumentation stérile au bloc opératoire.',
+    surgeryAlt3: 'Surveillance post-opératoire d’un animal sous anesthésie.',
+    doctorKicker: 'Votre vétérinaire',
+    doctorH2: 'Le vétérinaire que votre quartier connaît déjà',
+    doctorQuote:
+      '« Des animaux en bonne santé pour un monde meilleur »',
+    doctorByline: 'Dr Adib Bassir — Vétérinaire chirurgien, directeur de la clinique.',
+    doctorCta: "Découvrir l'équipe",
+    doctorPhotoAlt:
+      'Dr Bassir devant la Clinique Vétérinaire Maârif, un golden retriever à ses côtés.',
     reviews: {
       kicker: 'Avis clients',
       h2: 'Ils nous confient leurs animaux',

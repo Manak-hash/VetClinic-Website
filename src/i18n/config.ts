@@ -18,7 +18,10 @@ export const LOCALE_META: Record<
   ar: { code: 'ar', native: 'العربية', label: 'AR', dir: 'rtl', htmlLang: 'ar' },
 }
 
-export const SITE_URL = 'https://cliniquevetomaarif.ma' // à confirmer à l'achat (task #53)
+// Domain .ma jamais acheté (NXDOMAIN vérifié 2026-09) — pointer sur le déploiement
+// Workers réel. Quand le .ma sera acheté + Custom Domain attaché : remettre
+// 'https://cliniquevetomaarif.ma' ici (sitemap/robots/og/canonicals en dérivent tous).
+export const SITE_URL = 'https://vetclinic-website.okhowazaki.workers.dev'
 
 export function isLocale(x: string): x is Locale {
   return (LOCALES as readonly string[]).includes(x)

@@ -326,7 +326,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-paper/15 pt-5 text-[0.8rem] text-paper/45 md:flex-row md:items-center md:justify-between">
+        <div className="mt-10 flex flex-col gap-2 border-t border-paper/15 pt-5 text-[0.8rem] text-paper/55 md:flex-row md:items-center md:justify-between">
           <p>
             © {new Date().getFullYear()} {t.common.clinicName} {t.common.rights}
           </p>
@@ -336,7 +336,7 @@ function Footer() {
               href="https://omnirise.dev"
               target="_blank"
               rel="noreferrer"
-              className="font-medium text-paper/60 transition-colors hover:text-[#8fd0c9]"
+              className="font-medium text-paper/65 transition-colors hover:text-[#8fd0c9]"
             >
               {t.common.designedBy}
             </a>
