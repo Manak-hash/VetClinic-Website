@@ -7,6 +7,8 @@ import { breadcrumbLd } from '../components/jsonld'
 import { useI18n } from '../i18n'
 import { pathFor } from '../i18n/config'
 import { WA_LINK } from '../data'
+import { ResponsiveImg } from '../components/ResponsiveImg'
+import { IMG_WIDTHS } from '../components/img-widths'
 
 /* ------------------------------------------------------------------ */
 /* Page Services — grille complète + détail chirurgie (protocole)      */
@@ -36,7 +38,7 @@ const SERVICE_ICONS: Record<(typeof SERVICE_KEYS)[number], string> = {
   dentisterie: 'tooth',
   ophtalmologie: 'eye',
   hospitalisation: 'bed',
-  pharmacie: 'bowl',
+  pharmacie: 'pill',
   nutrition: 'bowl',
   toilettage: 'scissors',
   laser: 'zap',
@@ -88,7 +90,7 @@ export function ServicesPage() {
                 <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-teal-soft text-teal transition-colors group-hover:bg-teal group-hover:text-white">
                   <Icon name={SERVICE_ICONS[key]} className="h-5.5 w-5.5" />
                 </span>
-                <h2 className="font-display text-[1.15rem] font-semibold tracking-tight">{s.title}</h2>
+                <h3 className="font-display text-[1.15rem] font-semibold tracking-tight">{s.title}</h3>
                 <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-2">{s.short}</p>
                 <p className="mt-4 text-[0.92rem] leading-relaxed text-ink-2">{s.body[0]}</p>
               </article>
@@ -97,11 +99,13 @@ export function ServicesPage() {
         </div>
 
         <figure className="reveal mt-14 overflow-hidden rounded-2xl border border-line bg-white shadow-card">
-          <img
+          <ResponsiveImg
+            base="clinic-interior"
             src="/clinic-interior.jpg"
             alt={t.services.interiorCaption}
+            widths={IMG_WIDTHS['clinic-interior']}
+            sizes="(max-width: 768px) 100vw, 1152px"
             className="h-64 w-full object-cover sm:h-80"
-            loading="lazy"
           />
           <figcaption className="flex items-center justify-between gap-4 px-5 py-3.5 text-[0.85rem] text-ink-3">
             <span>{t.services.interiorCaption}</span>
@@ -113,14 +117,16 @@ export function ServicesPage() {
 
         {/* Laboratoire — analyseur sur place (photos réelles) */}
         <div className="reveal mt-8 grid gap-3 sm:grid-cols-3">
-          {['/dr-bassir-in-lab-1.jpeg', '/dr-bassir-in-lab-2.jpeg', '/dr-bassir-in-lab-3.jpeg'].map(
-            (src) => (
-              <figure key={src} className="photo-card overflow-hidden rounded-xl">
-                <img
-                  src={src}
+          {(['dr-bassir-in-lab-1', 'dr-bassir-in-lab-2', 'dr-bassir-in-lab-3'] as const).map(
+            (base) => (
+              <figure key={base} className="photo-card overflow-hidden rounded-xl">
+                <ResponsiveImg
+                  base={base}
+                  src={`/${base}.jpeg`}
                   alt={t.services.labCaption}
+                  widths={IMG_WIDTHS[base]}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="aspect-[3/4] w-full object-cover"
-                  loading="lazy"
                 />
               </figure>
             ),
@@ -304,13 +310,15 @@ function SurgeryDetail() {
             </ul>
 
             <div className="mt-8 grid grid-cols-3 gap-3">
-              {['/surgery-1.jpg', '/surgery-2.jpg', '/surgery-3.jpg'].map((src) => (
-                <figure key={src} className="photo-card overflow-hidden rounded-xl">
-                  <img
-                    src={src}
+              {(['surgery-1', 'surgery-2', 'surgery-3'] as const).map((base) => (
+                <figure key={base} className="photo-card overflow-hidden rounded-xl">
+                  <ResponsiveImg
+                    base={base}
+                    src={`/${base}.jpg`}
                     alt={t.services.photosCaption}
+                    widths={IMG_WIDTHS[base]}
+                    sizes="(max-width: 640px) 33vw, (max-width: 1024px) 30vw, 15vw"
                     className="aspect-[3/4] w-full object-cover"
-                    loading="lazy"
                   />
                 </figure>
               ))}
@@ -321,11 +329,18 @@ function SurgeryDetail() {
 
         <div className="reveal mt-12 grid gap-3 sm:grid-cols-2">
           {[
-            { src: '/xray-leg.jpg', alt: t.services.items.imagerie.title },
-            { src: '/xray-unidentified.jpg', alt: t.services.items.imagerie.title },
+            { src: '/xray-leg.jpg', base: 'xray-leg' as const, alt: t.services.xrayLegAlt },
+            { src: '/xray-unidentified.jpg', base: 'xray-unidentified' as const, alt: t.services.xrayOtherAlt },
           ].map((x) => (
-            <figure key={x.src} className="photo-card overflow-hidden rounded-xl">
-              <img src={x.src} alt={x.alt} className="h-56 w-full object-cover" loading="lazy" />
+            <figure key={x.base} className="photo-card overflow-hidden rounded-xl">
+              <ResponsiveImg
+                base={x.base}
+                src={x.src}
+                alt={x.alt}
+                widths={IMG_WIDTHS[x.base]}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 576px"
+                className="h-56 w-full object-cover"
+              />
             </figure>
           ))}
         </div>

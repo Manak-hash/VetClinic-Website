@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import './index.css'
 import { I18nProvider } from './i18n'
 import { routeForPath, isLocale, type Locale, type RouteId } from './i18n/config'
@@ -41,8 +41,20 @@ function App() {
   )
 }
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+// SSG : les shells contiennent le HTML renderToString → hydratation
+// (sinon React écraserait le contenu pré-rendu = LCP régressif)
+const rootEl = document.getElementById('root')!
+if (rootEl.hasChildNodes()) {
+  hydrateRoot(
+    rootEl,
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  )
+} else {
+  createRoot(rootEl).render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  )
+}

@@ -7,12 +7,23 @@ import { routeForPath, pathFor, type Locale, type RouteId } from './i18n/config'
 /* ------------------------------------------------------------------ */
 
 function getPath(): string {
+  if (memoryPath) return memoryPath
   return window.location.pathname
 }
 
 const listeners = new Set<() => void>()
 
 let currentPath = typeof window !== 'undefined' ? getPath() : '/'
+
+/**
+ * SSG — au build, fournit un chemin « mémoire » au routeur sans window.
+ * Le render-time adjust (ci-dessous) propage ce chemin à currentPath.
+ */
+let memoryPath: string | null = null
+export function setMemoryPath(p: string) {
+  memoryPath = p
+  currentPath = p
+}
 
 function emit() {
   currentPath = getPath()
@@ -39,7 +50,9 @@ export function usePath(): string {
       }
     },
     () => currentPath,
-    () => '/',
+    // SSG : le snapshot serveur doit refléter la route rendue (setMemoryPath),
+    // sinon chaque shell rend la page d'accueil.
+    () => currentPath,
   )
 }
 

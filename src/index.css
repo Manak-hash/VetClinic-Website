@@ -211,32 +211,6 @@ body {
 }
 
 
-.urgence-bar {
-  box-shadow: 0 -6px 24px -8px rgb(28 43 46 / 0.35);
-  transform: translateY(110%);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-
-.urgence-bar.shown {
-  animation: urgence-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes urgence-in {
-  from {
-    transform: translateY(110%);
-  }
-  to {
-    transform: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .urgence-bar {
-    transform: none;
-    animation: none;
-  }
-}
-
 /* ------------------------------------------------------------------ */
 /* Sélecteur de langue — pilule animée, fond glissant mesuré en JS     */
 /* ------------------------------------------------------------------ */

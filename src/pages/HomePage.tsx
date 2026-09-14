@@ -235,12 +235,7 @@ export function HomePage() {
       </section>
 
       {/* Avis clients — extraits Google réels */}
-      <ReviewsTeaser
-        kicker={t.home.reviews.kicker}
-        h2={t.home.reviews.h2}
-        viewAll={t.home.reviews.viewAll}
-        basedOn={t.home.reviews.basedOn}
-      />
+      <ReviewsTeaser />
 
       {/* Zones */}
       <section className="section-pad mx-auto max-w-6xl py-20 md:py-28">

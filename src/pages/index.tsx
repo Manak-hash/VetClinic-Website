@@ -1,41 +1,64 @@
+import { lazy, Suspense } from 'react'
 import { useRoute } from '../router'
 import { HomePage } from './HomePage'
-import { ServicesPage } from './ServicesPage'
-import { EquipePage } from './EquipePage'
-import { FaqPage } from './FaqPage'
-import { ContactPage } from './ContactPage'
-import { ZonesPage, QuartierPage } from './ZonesPage'
 import { NotFoundPage } from './NotFoundPage'
 
 /* ------------------------------------------------------------------ */
-/* Aiguillage manifest-driven : routeId -> composant                   */
+/* Aiguillage manifest-driven : routeId -> composant.                  */
+/* Home = eager (LCP), les autres pages = lazy (code-split : le JS des */
+/* 4 autres pages n'est plus parsé sur la route courante).             */
 /* ------------------------------------------------------------------ */
+
+const ServicesPage = lazy(() => import('./ServicesPage').then((m) => ({ default: m.ServicesPage })))
+const EquipePage = lazy(() => import('./EquipePage').then((m) => ({ default: m.EquipePage })))
+const FaqPage = lazy(() => import('./FaqPage').then((m) => ({ default: m.FaqPage })))
+const ContactPage = lazy(() => import('./ContactPage').then((m) => ({ default: m.ContactPage })))
+const ZonesPage = lazy(() => import('./ZonesPage').then((m) => ({ default: m.ZonesPage })))
+const QuartierPage = lazy(() => import('./ZonesPage').then((m) => ({ default: m.QuartierPage })))
+
+function PageFallback() {
+  return <div aria-hidden="true" />
+}
 
 export function PageOutlet() {
   const route = useRoute()
 
   if (!route) return <NotFoundPage />
 
+  let page: React.ReactNode
   switch (route.id) {
     case 'home':
-      return <HomePage />
+      page = <HomePage />
+      break
     case 'services':
-      return <ServicesPage />
+      page = <ServicesPage />
+      break
     case 'equipe':
-      return <EquipePage />
+      page = <EquipePage />
+      break
     case 'faq':
-      return <FaqPage />
+      page = <FaqPage />
+      break
     case 'contact':
-      return <ContactPage />
+      page = <ContactPage />
+      break
     case 'zones':
-      return <ZonesPage />
+      page = <ZonesPage />
+      break
     case 'zoneMaarif':
-      return <QuartierPage quartierKey="maarif" />
+      page = <QuartierPage quartierKey="maarif" />
+      break
     case 'zoneGauthier':
-      return <QuartierPage quartierKey="gauthier" />
+      page = <QuartierPage quartierKey="gauthier" />
+      break
     case 'zoneAnfa':
-      return <QuartierPage quartierKey="anfa" />
+      page = <QuartierPage quartierKey="anfa" />
+      break
     default:
-      return <NotFoundPage />
+      page = <NotFoundPage />
   }
+
+  // SSG : le HTML rendu contient déjà la page complète. Suspense ne doit
+  // remplacer le contenu QUE si le chunk lazy n'est pas encore chargé.
+  return <Suspense fallback={<PageFallback />}>{page}</Suspense>
 }

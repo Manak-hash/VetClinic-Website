@@ -1,6 +1,7 @@
 import { Icon } from '../components/Icon'
-import { RATING_LABEL_FR, REVIEWS, type Review } from '../reviews'
+import { useI18n, type Messages } from '../i18n'
 import { CLINIC } from '../data'
+import { RATING_VALUE } from '../reviews'
 
 /* ------------------------------------------------------------------ */
 /* Étoiles — rendu demi-étoile pour la moyenne (RTL-safe : pure déco,  */
@@ -28,11 +29,15 @@ function Stars({ value }: { value: number }) {
   )
 }
 
-function ReviewCard({ review }: { review: Review }) {
+type ReviewItem = Messages['home']['reviews']['items'][number]
+
+function ReviewCard({ review }: { review: ReviewItem }) {
   return (
     <figure className="reveal flex h-full flex-col rounded-2xl border border-line bg-white p-6">
       <Stars value={review.stars} />
-      <blockquote className="mt-4 flex-1 text-[0.95rem] leading-relaxed text-ink-2">
+      {/* Quote from the Google Business profile — original language French,
+          shown here in translation. lang="fr" keeps screen readers honest. */}
+      <blockquote lang="fr" className="mt-4 flex-1 text-[0.95rem] leading-relaxed text-ink-2">
         « {review.text} »
       </blockquote>
       <figcaption className="mt-5 flex items-center gap-3">
@@ -52,35 +57,28 @@ function ReviewCard({ review }: { review: Review }) {
 
 /* ------------------------------------------------------------------ */
 /* Avis — extraits réels de la fiche Google + lien vers la fiche.      */
-/* Les libellés viennent du dictionnaire via props (t.home.reviews).   */
+/* Tout le libellé (et les extraits traduits) vient du dictionnaire.   */
 /* ------------------------------------------------------------------ */
-export function ReviewsTeaser({
-  kicker,
-  h2,
-  viewAll,
-  basedOn,
-}: {
-  kicker: string
-  h2: string
-  viewAll: string
-  basedOn: string
-}) {
+export function ReviewsTeaser() {
+  const { t } = useI18n()
+  const rv = t.home.reviews
+
   return (
     <section className="section-pad border-t border-line bg-paper-2/50 py-20 md:py-24">
       <div className="mx-auto max-w-6xl">
         <div className="reveal mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <p className="eyebrow">{kicker}</p>
+            <p className="eyebrow">{rv.kicker}</p>
             <h2 className="mt-3 font-display text-[clamp(1.8rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight">
-              {h2}
+              {rv.h2}
             </h2>
           </div>
           <div className="shrink-0">
             <span className="flex items-center gap-2">
               <span className="font-display text-2xl font-bold tracking-tight">
-                {RATING_LABEL_FR}
+                {rv.rating}
               </span>
-              <Stars value={4.3} />
+              <Stars value={RATING_VALUE} />
             </span>
             <a
               href={CLINIC.reviewsLink}
@@ -88,20 +86,20 @@ export function ReviewsTeaser({
               rel="noreferrer"
               className="mt-1 inline-flex items-center gap-1.5 text-[0.88rem] font-semibold text-teal hover:underline"
             >
-              {viewAll}
+              {rv.viewAll}
               <Icon name="arrow" className="h-4 w-4 rtl:-scale-x-100" />
             </a>
           </div>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {REVIEWS.map((r) => (
+          {rv.items.map((r) => (
             <ReviewCard key={r.author} review={r} />
           ))}
         </div>
 
         <p className="reveal mt-6 text-center text-[0.82rem] text-ink-2">
-          {basedOn}
+          {rv.basedOn}
         </p>
       </div>
     </section>

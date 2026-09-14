@@ -5,6 +5,8 @@ import { HeroTopFade } from '../components/HeroTopFade'
 import { useI18n } from '../i18n'
 import { pathFor } from '../i18n/config'
 import { CLINIC, TEL_CLINIC, WA_LINK } from '../data'
+import { ResponsiveImg } from '../components/ResponsiveImg'
+import { IMG_WIDTHS } from '../components/img-widths'
 
 /* Langues parlées — endonymes, jamais traduits */
 const LANGUAGES: { code: string; name: string; native: string }[] = [
@@ -43,11 +45,15 @@ export function EquipePage() {
         <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <figure className="reveal relative mb-6">
             <div className="overflow-hidden rounded-2xl border border-line shadow-lift">
-              <img
+              <ResponsiveImg
+                base="dr-bassir"
                 src="/dr-bassir.jpg"
                 alt={t.equipe.directorCaption}
+                widths={IMG_WIDTHS['dr-bassir']}
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                loading="eager"
+                fetchPriority="high"
                 className="aspect-square w-full object-cover"
-                loading="lazy"
               />
             </div>
             <figcaption className="absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-5 py-2.5 shadow-card">
@@ -58,11 +64,13 @@ export function EquipePage() {
 
           {/* Dr Bassir en action — photo réelle (soin/vaccination) */}
           <figure className="reveal mt-10 overflow-hidden rounded-2xl border border-line shadow-card">
-            <img
+            <ResponsiveImg
+              base="dr-bassir-providing-a-med-or-vacin"
               src="/dr-bassir-providing-a-med-or-vacin.jpeg"
               alt={t.equipe.actionCaption}
+              widths={IMG_WIDTHS['dr-bassir-providing-a-med-or-vacin']}
+              sizes="(max-width: 1024px) 100vw, 55vw"
               className="h-64 w-full object-cover sm:h-80"
-              loading="lazy"
             />
             <figcaption className="flex items-center justify-between gap-4 px-5 py-3.5 text-[0.85rem] text-ink-3">
               <span>{t.equipe.actionCaption}</span>

@@ -104,7 +104,14 @@ export interface Messages {
     doctorByline: string
     doctorCta: string
     doctorPhotoAlt: string
-    reviews: { kicker: string; h2: string; viewAll: string; basedOn: string }
+    reviews: {
+      kicker: string
+      h2: string
+      viewAll: string
+      basedOn: string
+      rating: string
+      items: { author: string; stars: number; when: string; text: string }[]
+    }
     zonesKicker: string
     zonesH2: string
     faqKicker: string
@@ -130,6 +137,8 @@ export interface Messages {
     aftercareTitle: string
     photosCaption: string
     labCaption: string
+    xrayLegAlt: string
+    xrayOtherAlt: string
     ctaTitle: string
     ctaP: string
     ctaLabel: string
@@ -369,6 +378,15 @@ const fr: Messages = {
       h2: 'Ils nous confient leurs animaux',
       viewAll: 'Voir les 175 avis Google',
       basedOn: 'Note de 4,3 sur 5, basée sur 175 avis Google',
+      rating: '4,3',
+      items: [
+        { author: 'Asmaa B.', stars: 5, when: 'il y a un an', text: 'Le meilleur vétérinaire que je n’ai jamais vu, très compétent, il a fait un travail exceptionnel et a sauvé mon chat qui allait mourir. Mille merci à Dr Bassir qui est le meilleur, vraiment À RECOMMANDER.' },
+        { author: 'Kenza B.', stars: 5, when: 'il y a un an', text: 'Un docteur très engagé et gentil qui nous a rencontré en pleine nuit et a sauvé la vie de notre chienne. Le personnel est également très gentil et affectueux avec les animaux. Je recommande vivement !' },
+        { author: 'Mia M.', stars: 5, when: 'il y a 6 mois', text: 'Ça fait plus de 3 ans que je ramène mon chien (malinois) et je suis très satisfaite. Le médecin est très gentil, à l’écoute, serviable, et les prix raisonnables. Merci beaucoup pour votre qualité de travail.' },
+        { author: 'Rita I.', stars: 5, when: 'il y a 2 ans', text: 'C’est ma clinique vétérinaire depuis bientôt 9 ans, et je suis très très satisfaite pour mes loulous. Impeccable et beaucoup d’humanité. Personnel également très bienveillant.' },
+        { author: 'Amal H.', stars: 4, when: 'il y a 2 ans', text: 'Je consulte le Dr Bassir, le vétérinaire de mes chats, depuis plus de 15 ans, et je suis très satisfaite de ses services. Son savoir-faire et son habileté avec les animaux, en particulier les chats, sont remarquables !' },
+        { author: 'Fatim-Zohra A.', stars: 5, when: 'il y a 2 ans', text: 'Clinique au top, très propre quelque soit l’heure. Soins et chirurgies de qualité. Un vétérinaire à l’écoute des propriétaires et de leurs animaux. Équipe très compétente, très gentille et sympathique toujours souriante.' },
+      ],
     },
     zonesKicker: 'Casablanca',
     zonesH2: 'Votre vétérinaire, selon votre quartier',
@@ -397,6 +415,8 @@ const fr: Messages = {
     aftercareTitle: 'Après l’intervention',
     photosCaption: 'Au bloc opératoire — interventions suivies à la clinique.',
     labCaption: 'Au laboratoire d’analyses — bilans réalisés sur place par Dr Bassir.',
+    xrayLegAlt: 'Radiographie d’un membre — examen d’imagerie réalisé à la clinique',
+    xrayOtherAlt: 'Radiographie vétérinaire — lecture réalisée sur place par Dr Bassir',
     ctaTitle: 'Une intervention en tête ? Commencez par un message.',
     ctaP: 'Décrivez la situation sur WhatsApp : le Dr Bassir vous indique si une visite préopératoire est nécessaire et ce qu’elle comprendra.',
     ctaLabel: 'Poser une question chirurgie',

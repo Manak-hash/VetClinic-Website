@@ -182,6 +182,12 @@ export function Icon({ name, className = 'h-5 w-5' }: { name: string; className?
       </>
     ),
     zap: <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" />,
+    pill: (
+      <>
+        <path d="M10.5 20.5 3.5 13.5a4.95 4.95 0 1 1 7-7l7 7a4.95 4.95 0 1 1-7 7Z" />
+        <path d="m8.5 8.5 7 7" />
+      </>
+    ),
     instagram: (
       <>
         <rect x="3" y="3" width="18" height="18" rx="5" />

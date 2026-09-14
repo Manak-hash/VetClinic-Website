@@ -27,6 +27,9 @@ const IMAGES = [
   { file: 'surgery-3.jpg', widths: [480, 640] },
   { file: 'xray-leg.jpg', widths: [480, 640] },
   { file: 'xray-unidentified.jpg', widths: [480, 640] },
+  { file: 'dr-bassir-in-lab-1.jpeg', widths: [480, 640] },
+  { file: 'dr-bassir-in-lab-2.jpeg', widths: [480, 640] },
+  { file: 'dr-bassir-in-lab-3.jpeg', widths: [480, 640] },
 ]
 
 const QUALITY = { avif: 55, webp: 70 }

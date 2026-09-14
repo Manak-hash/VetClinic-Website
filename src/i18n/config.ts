@@ -94,9 +94,11 @@ export function routeForPath(pathname: string): { id: RouteId; locale: Locale } 
   if (seg && isLocale(seg) && clean === `/${seg}/`) return { id: 'home', locale: seg }
 
   for (const id of Object.keys(ROUTE_PATHS) as RouteId[]) {
-    if (id === 'notfound') continue
     for (const locale of LOCALES) {
-      if (ROUTE_PATHS[id][locale] === clean) return { id, locale }
+      // notfound : match avec OU sans slash final ('/404' tel que servi par Workers)
+      const candidate = ROUTE_PATHS[id][locale]
+      if (candidate === clean) return { id, locale }
+      if (id === 'notfound' && `${candidate}/` === clean) return { id, locale }
     }
   }
   return null

@@ -82,5 +82,29 @@
     ],
     "format": "avif",
     "fallback": "/img/xray-unidentified.jpg"
+  },
+  "dr-bassir-in-lab-1": {
+    "widths": [
+      480,
+      640
+    ],
+    "format": "avif",
+    "fallback": "/img/dr-bassir-in-lab-1.jpg"
+  },
+  "dr-bassir-in-lab-2": {
+    "widths": [
+      480,
+      640
+    ],
+    "format": "avif",
+    "fallback": "/img/dr-bassir-in-lab-2.jpg"
+  },
+  "dr-bassir-in-lab-3": {
+    "widths": [
+      480,
+      640
+    ],
+    "format": "avif",
+    "fallback": "/img/dr-bassir-in-lab-3.jpg"
   }
 }

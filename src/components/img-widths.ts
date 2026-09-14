@@ -10,4 +10,7 @@ export const IMG_WIDTHS = {
   'surgery-3': [480, 640],
   'xray-leg': [480, 640],
   'xray-unidentified': [480, 640],
+  'dr-bassir-in-lab-1': [480, 640],
+  'dr-bassir-in-lab-2': [480, 640],
+  'dr-bassir-in-lab-3': [480, 640],
 } as const
