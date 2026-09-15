@@ -91,7 +91,7 @@ function Header({
       }`}
     >
       <div className="section-pad mx-auto flex h-16 max-w-6xl items-center justify-between gap-2">
-        <Link to={pathFor('home', locale)}>
+        <Link to={pathFor('home', locale)} className="shrink-0">
           <span className="flex items-center gap-2.5">
             <span
               className={`flex h-9 w-9 items-center justify-center rounded-xl transition-colors ${
@@ -101,7 +101,7 @@ function Header({
               <Icon name="paw" className="h-5 w-5" />
             </span>
             <span
-              className={`font-display text-[1rem] font-semibold leading-tight tracking-tight transition-colors duration-300 ${
+              className={`font-display text-[1rem] font-semibold leading-tight tracking-tight transition-colors duration-300 md:text-[0.9rem] lg:text-[1rem] ${
                 onDark ? 'text-white' : ''
               }`}
             >
@@ -113,12 +113,12 @@ function Header({
             </span>
           </span>
         </Link>
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Principal">
+        <nav className="hidden items-center gap-4 md:flex lg:gap-7" aria-label="Principal">
           {NAV_ITEMS.map((n) => (
             <Link
               key={n.id}
               to={n.to}
-              className={`text-[0.92rem] font-medium transition-colors ${linkHover} ${
+              className={`whitespace-nowrap text-[0.92rem] font-medium transition-colors ${linkHover} ${
                 routeId === n.id ? linkActive : linkIdle
               }`}
             >
@@ -154,15 +154,16 @@ function Header({
           >
             <Icon name={open ? 'close' : 'menu'} className="h-5 w-5" />
           </button>
-          {/* WhatsApp — desktop uniquement */}
+          {/* WhatsApp — desktop ; texte masqué md–lg (pilule icône, libellé en aria-label) */}
           <a
             href={WA_LINK}
             target="_blank"
             rel="noreferrer"
-            className="hidden items-center gap-2 rounded-full bg-teal px-4 py-2 text-[0.85rem] font-semibold text-white transition-colors hover:bg-teal-deep md:flex"
+            aria-label={t.common.bookWhatsapp}
+            className="hidden items-center justify-center gap-2 rounded-full bg-teal py-2 text-[0.85rem] font-semibold text-white transition-colors hover:bg-teal-deep md:flex md:w-10 md:shrink-0 md:px-0 lg:w-auto lg:px-4"
           >
             <Icon name="whatsapp" className="h-4 w-4" />
-            {t.common.bookWhatsapp}
+            <span className="hidden lg:inline">{t.common.bookWhatsapp}</span>
           </a>
         </div>
       </div>
