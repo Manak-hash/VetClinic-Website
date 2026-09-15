@@ -1,7 +1,7 @@
 import { Icon } from '../components/Icon'
 import { useI18n, type Messages } from '../i18n'
 import { CLINIC } from '../data'
-import { RATING_VALUE } from '../reviews'
+import { RATING_VALUE } from '../content'
 
 /* ------------------------------------------------------------------ */
 /* Étoiles — rendu demi-étoile pour la moyenne (RTL-safe : pure déco,  */

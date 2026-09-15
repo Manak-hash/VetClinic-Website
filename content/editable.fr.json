@@ -1,0 +1,94 @@
+{
+  "meta": {
+    "home": {
+      "title": "Clinique Vétérinaire Maârif — Vétérinaire à Casablanca depuis 2002",
+      "description": "Votre vétérinaire au Maârif, Casablanca : consultations chiens/chats/NAC, chirurgie, imagerie, urgences. 60 Bd Bir Anzarane. Lun–ven 9h–19h."
+    },
+    "services": {
+      "title": "Services — Consultations, chirurgie, laboratoire, dentisterie | Clinique Vétérinaire Maârif Casablanca",
+      "description": "Consultations chiens, chats et NAC, chirurgie, laboratoire d'analyses, dentisterie, ophtalmologie, hospitalisation, toilettage, laser et urgences au Maârif, Casablanca."
+    },
+    "equipe": {
+      "title": "L'équipe — Dr Bassir | Clinique Vétérinaire Maârif Casablanca",
+      "description": "Dr Bassir et l'équipe de la Clinique Vétérinaire Maârif : plus de 20 ans d'expérience chirurgicale au service des animaux de Casablanca depuis 2002."
+    },
+    "faq": {
+      "title": "FAQ — Tarifs, horaires, urgences | Clinique Vétérinaire Maârif Casablanca",
+      "description": "Questions fréquentes : prix d'une consultation, horaires, urgences, rendez-vous, NAC, stationnement. Clinique Vétérinaire Maârif, Casablanca."
+    },
+    "contact": {
+      "title": "Contact & RDV — Clinique Vétérinaire Maârif, Casablanca",
+      "description": "Prendre rendez-vous : WhatsApp, téléphone ou urgence. 60 Bd Bir Anzarane, Maârif, Casablanca. Lun–ven 9h–19h, sam 9h–14h."
+    },
+    "zones": {
+      "title": "Vétérinaire à Casablanca — Zones desservies | Clinique Vétérinaire Maârif",
+      "description": "Votre vétérinaire au Maârif, au Gauthier et à Anfa : itinéraires, stationnement privé et accès depuis chaque quartier de Casablanca."
+    }
+  },
+  "hours": {
+    "label": "Horaires",
+    "table": [
+      {
+        "days": "Lundi – Vendredi",
+        "hours": "9h – 19h"
+      },
+      {
+        "days": "Samedi",
+        "hours": "9h – 14h"
+      },
+      {
+        "days": "Dimanche",
+        "hours": "Fermé"
+      }
+    ],
+    "footer": "Ouvert lun–ven 9h–19h · sam 9h–14h",
+    "ramadan": "Ramadan",
+    "ramadanNote": "ouvert de 9h00 à 16h00.",
+    "outsideHours": "Urgences en dehors des horaires :"
+  },
+  "reviews": {
+    "kicker": "Avis clients",
+    "h2": "Ils nous confient leurs animaux",
+    "viewAll": "Voir les 175 avis Google",
+    "basedOn": "Note de 4,3 sur 5, basée sur 175 avis Google",
+    "rating": "4,3",
+    "items": [
+      {
+        "author": "Asmaa B.",
+        "stars": 5,
+        "when": "il y a un an",
+        "text": "Le meilleur vétérinaire que je n’ai jamais vu, très compétent, il a fait un travail exceptionnel et a sauvé mon chat qui allait mourir. Mille merci à Dr Bassir qui est le meilleur, vraiment À RECOMMANDER."
+      },
+      {
+        "author": "Kenza B.",
+        "stars": 5,
+        "when": "il y a un an",
+        "text": "Un docteur très engagé et gentil qui nous a rencontré en pleine nuit et a sauvé la vie de notre chienne. Le personnel est également très gentil et affectueux avec les animaux. Je recommande vivement !"
+      },
+      {
+        "author": "Mia M.",
+        "stars": 5,
+        "when": "il y a 6 mois",
+        "text": "Ça fait plus de 3 ans que je ramène mon chien (malinois) et je suis très satisfaite. Le médecin est très gentil, à l’écoute, serviable, et les prix raisonnables. Merci beaucoup pour votre qualité de travail."
+      },
+      {
+        "author": "Rita I.",
+        "stars": 5,
+        "when": "il y a 2 ans",
+        "text": "C’est ma clinique vétérinaire depuis bientôt 9 ans, et je suis très très satisfaite pour mes loulous. Impeccable et beaucoup d’humanité. Personnel également très bienveillant."
+      },
+      {
+        "author": "Amal H.",
+        "stars": 4,
+        "when": "il y a 2 ans",
+        "text": "Je consulte le Dr Bassir, le vétérinaire de mes chats, depuis plus de 15 ans, et je suis très satisfaite de ses services. Son savoir-faire et son habileté avec les animaux, en particulier les chats, sont remarquables !"
+      },
+      {
+        "author": "Fatim-Zohra A.",
+        "stars": 5,
+        "when": "il y a 2 ans",
+        "text": "Clinique au top, très propre quelque soit l’heure. Soins et chirurgies de qualité. Un vétérinaire à l’écoute des propriétaires et de leurs animaux. Équipe très compétente, très gentille et sympathique toujours souriante."
+      }
+    ]
+  }
+}

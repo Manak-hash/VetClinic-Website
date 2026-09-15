@@ -5,8 +5,34 @@ import en from './en'
 import ru from './ru'
 import ar from './ar'
 import es from './es'
+import { editableFor } from '../content'
 
 const MESSAGES: Record<Locale, Messages> = { fr, en, ru, ar, es }
+
+/* ------------------------------------------------------------------ */
+/* Messages fusionnés : content/*.json (édité via Sveltia par le       */
+/* client) ÉCRASE les valeurs des dictionnaires pour la surface        */
+/* éditable — meta SEO, horaires, avis. Les dictionnaires restent la   */
+/* prose statique + le jeu de valeurs de secours.                      */
+/* ------------------------------------------------------------------ */
+export function messagesFor(locale: Locale): Messages {
+  const base = MESSAGES[locale]
+  const ed = editableFor(locale)
+  return {
+    ...base,
+    meta: { ...base.meta, ...ed.meta },
+    common: {
+      ...base.common,
+      hoursLabel: ed.hours.label,
+      hoursTable: ed.hours.table,
+      footerHours: ed.hours.footer,
+      ramadan: ed.hours.ramadan,
+      ramadanNote: ed.hours.ramadanNote,
+    },
+    equipe: { ...base.equipe, outsideHours: ed.hours.outsideHours },
+    home: { ...base.home, reviews: ed.reviews },
+  }
+}
 
 /* ------------------------------------------------------------------ */
 /* Détection : préfixe chemin > choix stocké > langues du navigateur   */
@@ -69,7 +95,7 @@ export function I18nProvider({
   const value = useMemo<I18nCtx>(
     () => ({
       locale,
-      t: MESSAGES[locale],
+      t: messagesFor(locale),
       dir: LOCALE_META[locale].dir,
       routeId,
     }),

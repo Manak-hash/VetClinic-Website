@@ -1,7 +1,7 @@
 import { SITE_URL, pathFor, type Locale, type RouteId } from '../i18n/config'
 import type { Messages } from '../i18n'
 import { CLINIC } from '../data'
-import { RATING_VALUE, RATING_COUNT } from '../reviews'
+import { RATING_VALUE, RATING_COUNT } from '../content'
 
 /* ------------------------------------------------------------------ */
 /* JSON-LD locale-aware — construits depuis les dictionnaires          */

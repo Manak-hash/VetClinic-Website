@@ -113,7 +113,7 @@ export function prerenderLocalesPlugin(): Plugin {
         /* ---------- robots.txt ---------- */
         writeFileSync(
           join(dist, 'robots.txt'),
-          `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`,
+          `User-agent: *\nAllow: /\nDisallow: /admin\nSitemap: ${SITE_URL}/sitemap.xml\n`,
         )
 
         /* ---------- shells pour bots + visiteurs (SSG) ---------- */

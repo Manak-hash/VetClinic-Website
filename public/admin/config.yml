@@ -1,0 +1,622 @@
+# Sveltia CMS — Clinique Vétérinaire Maârif
+# Surface éditable par Dr Bassir : coordonnées, horaires, avis Google, SEO.
+# Chaque « Enregistrer » = 1 commit GitHub -> build Cloudflare -> site à jour.
+# La syntaxe des fichiers est validée par `tsc -b` au build : une erreur de
+# contenu casse le build, pas le site en production.
+#
+# Un fichier content/editable.<locale>.json = UNE entrée regroupant SEO +
+# horaires + avis (jamais deux entrées sur le même fichier).
+
+backend:
+  name: github
+  repo: Manak-hash/VetClinic-Website
+  # Worker sveltia-cms-auth (déployé une fois, voir CMS-SETUP.md)
+  auth_endpoint: https://CHANGEME-auth.workers.dev/auth
+
+media_folder: public/img/uploads
+public_folder: /img/uploads
+
+site_url: https://vetclinic.omnirise.dev
+
+collections:
+  - name: site
+    label: Coordonnées de la clinique
+    files:
+      - name: site
+        label: Coordonnées
+        file: content/site.json
+        fields:
+          - label: Téléphone principal
+            name: phone
+            widget: string
+            hint: Affiché sur le site tel quel (ex. 05 22 23 30 95)
+          - label: Téléphone secondaire
+            name: phone2
+            widget: string
+          - label: Téléphone urgences
+            name: urgency
+            widget: string
+          - label: Numéro WhatsApp
+            name: whatsapp
+            widget: string
+            hint: Format international sans + ni espaces (ex. 212661492618)
+          - label: Email
+            name: email
+            widget: string
+          - label: Lien Instagram
+            name: instagram
+            widget: string
+          - label: Adresse (rue)
+            name: address_street
+            widget: string
+          - label: Code postal
+            name: address_zip
+            widget: string
+          - label: Année de fondation
+            name: founded
+            widget: string
+          - label: Latitude
+            name: lat
+            widget: number
+            value_type: float
+          - label: Longitude
+            name: lng
+            widget: number
+            value_type: float
+          - label: Google Maps CID
+            name: maps_cid
+            widget: string
+            hint: Identifiant de la fiche Google — ne modifier que sur conseil
+          - label: Note Google (sur 5)
+            name: rating_value
+            widget: number
+            value_type: float
+          - label: Nombre d'avis Google
+            name: rating_count
+            widget: number
+            value_type: int
+
+  - name: content-fr
+    label: Contenu éditable — Français
+    files:
+      - name: fr
+        label: Français (SEO + horaires + avis)
+        file: content/editable.fr.json
+        fields:
+          - label: SEO (titres et descriptions)
+            name: meta
+            widget: object
+            fields:
+              - label: Accueil
+                name: home
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Services
+                name: services
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Équipe
+                name: equipe
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: FAQ
+                name: faq
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Contact
+                name: contact
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Zones
+                name: zones
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+          - label: Horaires d'ouverture
+            name: hours
+            widget: object
+            fields:
+            - label: Libellé de la section
+              name: label
+              widget: string
+            - label: Ligne d'horaires (pied de page)
+              name: footer
+              widget: string
+            - label: Horaires (tableau)
+              name: table
+              widget: list
+              fields:
+                - { label: Jours, name: days, widget: string }
+                - { label: Heures, name: hours, widget: string }
+            - label: Mot « Ramadan »
+              name: ramadan
+              widget: string
+            - label: Note Ramadan
+              name: ramadanNote
+              widget: text
+            - label: Phrase « hors horaires » (page équipe)
+              name: outsideHours
+              widget: string
+          - label: Avis clients Google
+            name: reviews
+            widget: object
+            fields:
+            - label: Note affichée (texte, ex. 4,3)
+              name: rating
+              widget: string
+            - label: Accroche
+              name: kicker
+              widget: string
+            - label: Titre de la section
+              name: h2
+              widget: string
+            - label: Lien « voir tous les avis »
+              name: viewAll
+              widget: string
+            - label: Phrase « basée sur N avis »
+              name: basedOn
+              widget: string
+            - label: Avis affichés (6 sur la page d'accueil)
+              name: items
+              widget: list
+              fields:
+                - { label: Auteur, name: author, widget: string }
+                - label: Étoiles (1-5)
+                  name: stars
+                  widget: number
+                  value_type: int
+                  min: 1
+                  max: 5
+                - label: Quand (ex. il y a 6 mois)
+                  name: when
+                  widget: string
+                - label: Texte de l'avis
+                  name: text
+                  widget: text
+
+  - name: content-en
+    label: Contenu éditable — English
+    files:
+      - name: en
+        label: English (SEO + hours + reviews)
+        file: content/editable.en.json
+        fields:
+          - label: SEO (titres et descriptions)
+            name: meta
+            widget: object
+            fields:
+              - label: Accueil
+                name: home
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Services
+                name: services
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Équipe
+                name: equipe
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: FAQ
+                name: faq
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Contact
+                name: contact
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Zones
+                name: zones
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+          - label: Horaires d'ouverture
+            name: hours
+            widget: object
+            fields:
+            - label: Libellé de la section
+              name: label
+              widget: string
+            - label: Ligne d'horaires (pied de page)
+              name: footer
+              widget: string
+            - label: Horaires (tableau)
+              name: table
+              widget: list
+              fields:
+                - { label: Jours, name: days, widget: string }
+                - { label: Heures, name: hours, widget: string }
+            - label: Mot « Ramadan »
+              name: ramadan
+              widget: string
+            - label: Note Ramadan
+              name: ramadanNote
+              widget: text
+            - label: Phrase « hors horaires » (page équipe)
+              name: outsideHours
+              widget: string
+          - label: Avis clients Google
+            name: reviews
+            widget: object
+            fields:
+            - label: Note affichée (texte, ex. 4,3)
+              name: rating
+              widget: string
+            - label: Accroche
+              name: kicker
+              widget: string
+            - label: Titre de la section
+              name: h2
+              widget: string
+            - label: Lien « voir tous les avis »
+              name: viewAll
+              widget: string
+            - label: Phrase « basée sur N avis »
+              name: basedOn
+              widget: string
+            - label: Avis affichés (6 sur la page d'accueil)
+              name: items
+              widget: list
+              fields:
+                - { label: Auteur, name: author, widget: string }
+                - label: Étoiles (1-5)
+                  name: stars
+                  widget: number
+                  value_type: int
+                  min: 1
+                  max: 5
+                - label: Quand (ex. il y a 6 mois)
+                  name: when
+                  widget: string
+                - label: Texte de l'avis
+                  name: text
+                  widget: text
+
+  - name: content-ru
+    label: Contenu éditable — Русский
+    files:
+      - name: ru
+        label: Русский (SEO + часы + отзывы)
+        file: content/editable.ru.json
+        fields:
+          - label: SEO (titres et descriptions)
+            name: meta
+            widget: object
+            fields:
+              - label: Accueil
+                name: home
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Services
+                name: services
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Équipe
+                name: equipe
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: FAQ
+                name: faq
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Contact
+                name: contact
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Zones
+                name: zones
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+          - label: Horaires d'ouverture
+            name: hours
+            widget: object
+            fields:
+            - label: Libellé de la section
+              name: label
+              widget: string
+            - label: Ligne d'horaires (pied de page)
+              name: footer
+              widget: string
+            - label: Horaires (tableau)
+              name: table
+              widget: list
+              fields:
+                - { label: Jours, name: days, widget: string }
+                - { label: Heures, name: hours, widget: string }
+            - label: Mot « Ramadan »
+              name: ramadan
+              widget: string
+            - label: Note Ramadan
+              name: ramadanNote
+              widget: text
+            - label: Phrase « hors horaires » (page équipe)
+              name: outsideHours
+              widget: string
+          - label: Avis clients Google
+            name: reviews
+            widget: object
+            fields:
+            - label: Note affichée (texte, ex. 4,3)
+              name: rating
+              widget: string
+            - label: Accroche
+              name: kicker
+              widget: string
+            - label: Titre de la section
+              name: h2
+              widget: string
+            - label: Lien « voir tous les avis »
+              name: viewAll
+              widget: string
+            - label: Phrase « basée sur N avis »
+              name: basedOn
+              widget: string
+            - label: Avis affichés (6 sur la page d'accueil)
+              name: items
+              widget: list
+              fields:
+                - { label: Auteur, name: author, widget: string }
+                - label: Étoiles (1-5)
+                  name: stars
+                  widget: number
+                  value_type: int
+                  min: 1
+                  max: 5
+                - label: Quand (ex. il y a 6 mois)
+                  name: when
+                  widget: string
+                - label: Texte de l'avis
+                  name: text
+                  widget: text
+
+  - name: content-ar
+    label: Contenu éditable — العربية
+    files:
+      - name: ar
+        label: العربية (SEO + horaires + avis)
+        file: content/editable.ar.json
+        fields:
+          - label: SEO (titres et descriptions)
+            name: meta
+            widget: object
+            fields:
+              - label: Accueil
+                name: home
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Services
+                name: services
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Équipe
+                name: equipe
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: FAQ
+                name: faq
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Contact
+                name: contact
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Zones
+                name: zones
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+          - label: Horaires d'ouverture
+            name: hours
+            widget: object
+            fields:
+            - label: Libellé de la section
+              name: label
+              widget: string
+            - label: Ligne d'horaires (pied de page)
+              name: footer
+              widget: string
+            - label: Horaires (tableau)
+              name: table
+              widget: list
+              fields:
+                - { label: Jours, name: days, widget: string }
+                - { label: Heures, name: hours, widget: string }
+            - label: Mot « Ramadan »
+              name: ramadan
+              widget: string
+            - label: Note Ramadan
+              name: ramadanNote
+              widget: text
+            - label: Phrase « hors horaires » (page équipe)
+              name: outsideHours
+              widget: string
+          - label: Avis clients Google
+            name: reviews
+            widget: object
+            fields:
+            - label: Note affichée (texte, ex. 4,3)
+              name: rating
+              widget: string
+            - label: Accroche
+              name: kicker
+              widget: string
+            - label: Titre de la section
+              name: h2
+              widget: string
+            - label: Lien « voir tous les avis »
+              name: viewAll
+              widget: string
+            - label: Phrase « basée sur N avis »
+              name: basedOn
+              widget: string
+            - label: Avis affichés (6 sur la page d'accueil)
+              name: items
+              widget: list
+              fields:
+                - { label: Auteur, name: author, widget: string }
+                - label: Étoiles (1-5)
+                  name: stars
+                  widget: number
+                  value_type: int
+                  min: 1
+                  max: 5
+                - label: Quand (ex. il y a 6 mois)
+                  name: when
+                  widget: string
+                - label: Texte de l'avis
+                  name: text
+                  widget: text
+
+  - name: content-es
+    label: Contenu éditable — Español
+    files:
+      - name: es
+        label: Español (SEO + horario + reseñas)
+        file: content/editable.es.json
+        fields:
+          - label: SEO (titres et descriptions)
+            name: meta
+            widget: object
+            fields:
+              - label: Accueil
+                name: home
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Services
+                name: services
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Équipe
+                name: equipe
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: FAQ
+                name: faq
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Contact
+                name: contact
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+              - label: Zones
+                name: zones
+                widget: object
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+          - label: Horaires d'ouverture
+            name: hours
+            widget: object
+            fields:
+            - label: Libellé de la section
+              name: label
+              widget: string
+            - label: Ligne d'horaires (pied de page)
+              name: footer
+              widget: string
+            - label: Horaires (tableau)
+              name: table
+              widget: list
+              fields:
+                - { label: Jours, name: days, widget: string }
+                - { label: Heures, name: hours, widget: string }
+            - label: Mot « Ramadan »
+              name: ramadan
+              widget: string
+            - label: Note Ramadan
+              name: ramadanNote
+              widget: text
+            - label: Phrase « hors horaires » (page équipe)
+              name: outsideHours
+              widget: string
+          - label: Avis clients Google
+            name: reviews
+            widget: object
+            fields:
+            - label: Note affichée (texte, ex. 4,3)
+              name: rating
+              widget: string
+            - label: Accroche
+              name: kicker
+              widget: string
+            - label: Titre de la section
+              name: h2
+              widget: string
+            - label: Lien « voir tous les avis »
+              name: viewAll
+              widget: string
+            - label: Phrase « basée sur N avis »
+              name: basedOn
+              widget: string
+            - label: Avis affichés (6 sur la page d'accueil)
+              name: items
+              widget: list
+              fields:
+                - { label: Auteur, name: author, widget: string }
+                - label: Étoiles (1-5)
+                  name: stars
+                  widget: number
+                  value_type: int
+                  min: 1
+                  max: 5
+                - label: Quand (ex. il y a 6 mois)
+                  name: when
+                  widget: string
+                - label: Texte de l'avis
+                  name: text
+                  widget: text

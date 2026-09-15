@@ -1,0 +1,94 @@
+{
+  "meta": {
+    "home": {
+      "title": "Maârif Veterinary Clinic — Veterinarian in Casablanca since 2002",
+      "description": "Your veterinarian in Maârif, Casablanca: consultations for dogs, cats and exotic pets, surgery, imaging, emergencies. 60 Bd Bir Anzarane. Mon–Fri 9am – 7pm."
+    },
+    "services": {
+      "title": "Services — Consultations, surgery, laboratory, dentistry | Maârif Veterinary Clinic Casablanca",
+      "description": "Consultations for dogs, cats and exotic pets, surgery, in-house laboratory, dentistry, ophthalmology, hospitalization, grooming, laser and emergencies in Maârif, Casablanca."
+    },
+    "equipe": {
+      "title": "The team — Dr Bassir | Maârif Veterinary Clinic Casablanca",
+      "description": "Dr Bassir and the team at Maârif Veterinary Clinic: over 20 years of surgical experience serving the animals of Casablanca since 2002."
+    },
+    "faq": {
+      "title": "FAQ — Prices, hours, emergencies | Maârif Veterinary Clinic Casablanca",
+      "description": "Frequently asked questions: consultation prices, opening hours, emergencies, appointments, exotic pets, parking. Maârif Veterinary Clinic, Casablanca."
+    },
+    "contact": {
+      "title": "Contact & Appointments — Maârif Veterinary Clinic, Casablanca",
+      "description": "Book an appointment: WhatsApp, phone or emergency line. 60 Bd Bir Anzarane, Maârif, Casablanca. Mon–Fri 9am – 7pm, Sat 9am – 2pm."
+    },
+    "zones": {
+      "title": "Veterinarian in Casablanca — Areas served | Maârif Veterinary Clinic",
+      "description": "Your veterinarian in Maârif, Gauthier and Anfa: directions, private parking and access from every Casablanca neighborhood."
+    }
+  },
+  "hours": {
+    "label": "Opening hours",
+    "table": [
+      {
+        "days": "Monday – Friday",
+        "hours": "9am – 7pm"
+      },
+      {
+        "days": "Saturday",
+        "hours": "9am – 2pm"
+      },
+      {
+        "days": "Sunday",
+        "hours": "Closed"
+      }
+    ],
+    "footer": "Open Mon–Fri 9am – 7pm · Sat 9am – 2pm",
+    "ramadan": "Ramadan",
+    "ramadanNote": "open from 9:00am to 4:00pm.",
+    "outsideHours": "Emergencies outside opening hours:"
+  },
+  "reviews": {
+    "kicker": "Client reviews",
+    "h2": "Pet parents trust us with their own",
+    "viewAll": "See all 175 Google reviews",
+    "basedOn": "Rated 4.3 out of 5, based on 175 Google reviews",
+    "rating": "4.3",
+    "items": [
+      {
+        "author": "Asmaa B.",
+        "stars": 5,
+        "when": "a year ago",
+        "text": "The best veterinarian I have ever seen, very competent, he did exceptional work and saved my cat who was going to die. A thousand thanks to Dr Bassir, who is the best, really HIGHLY RECOMMENDED."
+      },
+      {
+        "author": "Kenza B.",
+        "stars": 5,
+        "when": "a year ago",
+        "text": "A very committed and kind doctor who met us in the middle of the night and saved our dog’s life. The staff are also very kind and affectionate with the animals. Highly recommended!"
+      },
+      {
+        "author": "Mia M.",
+        "stars": 5,
+        "when": "6 months ago",
+        "text": "I have been bringing my dog (a malinois) for over 3 years and I am very satisfied. The doctor is very kind, attentive, helpful, and the prices are reasonable. Thank you so much for the quality of your work."
+      },
+      {
+        "author": "Rita I.",
+        "stars": 5,
+        "when": "2 years ago",
+        "text": "This has been my veterinary clinic for almost 9 years, and I am very, very happy with them for my babies. Impeccable, with so much humanity. The staff are wonderfully caring too."
+      },
+      {
+        "author": "Amal H.",
+        "stars": 4,
+        "when": "2 years ago",
+        "text": "I have been seeing Dr Bassir, my cats’ veterinarian, for more than 15 years, and I am very satisfied with his services. His expertise and skill with animals, especially cats, are remarkable!"
+      },
+      {
+        "author": "Fatim-Zohra A.",
+        "stars": 5,
+        "when": "2 years ago",
+        "text": "A top clinic, very clean at any hour. Quality care and surgery. A veterinarian who listens to owners and their animals. A very competent, very kind, friendly team, always smiling."
+      }
+    ]
+  }
+}
