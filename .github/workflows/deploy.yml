@@ -1,0 +1,39 @@
+name: Deploy to Cloudflare Workers
+
+# Déploiement direct via wrangler — remplace le pipeline Workers Builds
+# de Cloudflare, qui reste bloqué en upload d'assets (bug workers-sdk#15060,
+# reproduit 3x le 2026-09-15 : build OK, puis hang 30 min, timeout).
+# Nécessite 2 secrets de repo : CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # permet aussi un déploiement manuel depuis l'onglet Actions
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm clean-install --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
