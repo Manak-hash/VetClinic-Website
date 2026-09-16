@@ -87,6 +87,7 @@ export function prerenderLocalesPlugin(): Plugin {
           zoneMaarif: { priority: '0.8', changefreq: 'monthly' },
           zoneGauthier: { priority: '0.8', changefreq: 'monthly' },
           zoneAnfa: { priority: '0.8', changefreq: 'monthly' },
+          privacy: { priority: '0.3', changefreq: 'yearly' },
         }
 
         /* ---------- sitemap.xml ---------- */

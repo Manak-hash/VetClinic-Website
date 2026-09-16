@@ -82,6 +82,18 @@ body {
   color: var(--color-paper);
 }
 
+/* Focus clavier visible et cohérent sur tout le site */
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.on-dark :focus-visible,
+section[class*='bg-ink'] :focus-visible {
+  outline-color: var(--color-paper);
+}
+
 /* ---------- shared ---------- */
 
 .eyebrow {

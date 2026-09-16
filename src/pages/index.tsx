@@ -1,20 +1,20 @@
-import { lazy, Suspense } from 'react'
+import { Suspense } from 'react'
 import { useRoute } from '../router'
 import { HomePage } from './HomePage'
+import { ServicesPage } from './ServicesPage'
+import { EquipePage } from './EquipePage'
+import { FaqPage } from './FaqPage'
+import { ContactPage } from './ContactPage'
+import { ZonesPage, QuartierPage } from './ZonesPage'
 import { NotFoundPage } from './NotFoundPage'
+import { PrivacyPage } from './PrivacyPage'
 
-/* ------------------------------------------------------------------ */
-/* Aiguillage manifest-driven : routeId -> composant.                  */
-/* Home = eager (LCP), les autres pages = lazy (code-split : le JS des */
-/* 4 autres pages n'est plus parsé sur la route courante).             */
-/* ------------------------------------------------------------------ */
-
-const ServicesPage = lazy(() => import('./ServicesPage').then((m) => ({ default: m.ServicesPage })))
-const EquipePage = lazy(() => import('./EquipePage').then((m) => ({ default: m.EquipePage })))
-const FaqPage = lazy(() => import('./FaqPage').then((m) => ({ default: m.FaqPage })))
-const ContactPage = lazy(() => import('./ContactPage').then((m) => ({ default: m.ContactPage })))
-const ZonesPage = lazy(() => import('./ZonesPage').then((m) => ({ default: m.ZonesPage })))
-const QuartierPage = lazy(() => import('./ZonesPage').then((m) => ({ default: m.QuartierPage })))
+/* Imports STATIQUES : le SSG (renderToString) ne résout pas les import()
+ * lazy — chaque shell sauf la home partait avec un corps vide (seuls le
+ * header/footer étaient pré-rendus). Le site fait ~400 kB de JS au total :
+ * le code-splitting économisait ~25 kB sur la route courante, au prix
+ * d'un HTML prerenderé incomplet (SEO) et d'un flash Suspense à
+ * l'hydratation. Le HTML complet d'abord. */
 
 function PageFallback() {
   return <div aria-hidden="true" />
@@ -54,11 +54,12 @@ export function PageOutlet() {
     case 'zoneAnfa':
       page = <QuartierPage quartierKey="anfa" />
       break
+    case 'privacy':
+      page = <PrivacyPage />
+      break
     default:
       page = <NotFoundPage />
   }
 
-  // SSG : le HTML rendu contient déjà la page complète. Suspense ne doit
-  // remplacer le contenu QUE si le chunk lazy n'est pas encore chargé.
   return <Suspense fallback={<PageFallback />}>{page}</Suspense>
 }

@@ -56,6 +56,11 @@ const es: Messages = {
       title: 'Página no encontrada | Clínica Veterinaria Maârif',
       description: 'Esta página no existe. Vuelva a la página de inicio de la Clínica Veterinaria Maârif, Casablanca.',
     },
+    privacy: {
+      title: 'Privacidad | Clínica Veterinaria Maârif, Casablanca',
+      description:
+        'Privacidad: este sitio web no recopila datos personales. Alojamiento, servicios de terceros y sus derechos (ley marroquí 09-08).',
+    },
   },
 
   nav: {
@@ -65,6 +70,7 @@ const es: Messages = {
     faq: 'FAQ',
     contact: 'Contacto',
     zones: 'Zonas cubiertas',
+    privacy: 'Privacidad',
   },
 
   common: {
@@ -108,10 +114,42 @@ const es: Messages = {
     pageNotFoundText:
       'A veces también las páginas se pierden. Lo más sencillo: volver al inicio o escribirnos directamente por WhatsApp.',
     callPrice: '05 22 23 30 95',
+    skipToContent: 'Ir al contenido principal',
+    loadMap: 'Cargar el mapa de Google Maps',
+  },
+
+  privacy: {
+    heroKicker: 'Transparencia',
+    heroH1: 'Privacidad',
+    heroSub:
+      'Este sitio web no recopila datos personales: sin formularios, sin rastreadores, sin cookies publicitarias. Esta página explica con total transparencia qué ocurre cuando lo visita.',
+    updated: 'Última actualización: septiembre de 2026.',
+    collectTitle: 'Ninguna recogida de datos',
+    collectBody:
+      'El sitio no tiene formulario de contacto, cuentas de usuario, herramientas de analítica ni cookies de seguimiento. El sitio en sí no recopila, almacena ni comparte ningún dato personal. Pedir cita o hacer una consulta se hace por WhatsApp, teléfono o email: la conversación transcurre entonces directamente con la clínica, fuera del sitio web.',
+    hostTitle: 'Alojamiento',
+    hostBody:
+      'El sitio está alojado en Cloudflare, Inc. Como en cualquier visita web, los servidores de alojamiento reciben la información técnica necesaria para mostrar la página: dirección IP, tipo de navegador, fecha y hora de la petición. Estos registros técnicos sirven exclusivamente para la seguridad y el funcionamiento del servicio, se conservan durante un tiempo limitado por el proveedor, y no se analizan con fines publicitarios ni se ceden. El sitio se sirve por HTTPS (conexión cifrada).',
+    thirdTitle: 'Servicios de terceros',
+    thirdBody:
+      'El sitio no carga ningún servicio de terceros sin su conocimiento. Solo la página de Contacto contiene un mapa de Google Maps, que se muestra únicamente si usted lo solicita — antes de ese clic, Google no recibe ninguna información sobre usted. Los siguientes enlaces salen del sitio web y se rigen por las condiciones de sus editores:',
+    thirdItems: [
+      'WhatsApp (Meta) — citas: la conversación y su contenido se rigen por las condiciones de WhatsApp.',
+      'Google Maps — plano de acceso: se carga solo tras pulsar «Cargar el mapa».',
+      'Instagram (Meta) — página pública de la clínica.',
+      'Teléfono y email — contacto directo con la clínica, independiente del sitio web.',
+    ],
+    rightsTitle: 'Sus derechos (ley 09-08)',
+    rightsBody:
+      'Conforme a la ley marroquí 09-08 relativa a la protección de las personas físicas respecto al tratamiento de datos de carácter personal, usted dispone de derechos de acceso, rectificación y oposición sobre los datos que haya comunicado directamente a la clínica (citas, WhatsApp, email). Para ejercerlos: contact@cndp.ma o directamente en la recepción de la clínica.',
+    cndpTitle: 'Declaración CNDP',
+    cndpBody:
+      'Al no realizar el sitio ningún tratamiento automatizado de datos personales, no está sujeto a declaración previa ante la Comisión Nacional de control de la protección de datos de carácter personal (CNDP). Si la clínica llegara a recopilar datos en el futuro (por ejemplo, un formulario de cita en línea), la declaración necesaria se presentaría antes de cualquier recogida y esta página se actualizaría.',
+    responsible: 'Responsable del sitio: Clínica Veterinaria Maârif, 60, Boulevard Bir Anzarane, 20330 Casablanca, Marruecos.',
   },
 
   home: {
-    eyebrow: 'Casablanca · Desde 2002',
+    eyebrow: 'Casablanca · desde 2002',
     h1a: 'Su mascota,',
     h1b: 'en buenas manos.',
     sub: 'Perros, gatos y exóticos. Consultas, cirugía, imagen y urgencias — en pleno corazón de Maârif, en el bulevar Bir Anzarane.',

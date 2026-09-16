@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Icon } from '../components/Icon'
 import { Link } from '../components/Link'
 import { Seo } from '../components/Seo'
@@ -12,6 +13,9 @@ import { CLINIC, TEL_CLINIC, TEL_URGENCE, WA_LINK } from '../data'
 
 export function ContactPage() {
   const { t, locale, routeId } = useI18n()
+  /* Carte en chargement différé : aucune requête vers Google avant le clic
+     (cf. page Confidentialité — « chargée uniquement si vous le demandez »). */
+  const [mapLoaded, setMapLoaded] = useState(false)
 
   const quickLinks = [
     { id: 'faq' as const, label: t.contact.seeFaq },
@@ -150,13 +154,27 @@ export function ContactPage() {
               <Icon name="arrow" className="h-4 w-4 rtl:-scale-x-100" />
             </a>
             <div className="maps-frame mt-5 overflow-hidden rounded-xl">
-              <iframe
-                title={t.common.clinicName}
-                src={CLINIC.mapsEmbed}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
+              {mapLoaded ? (
+                <iframe
+                  title={t.common.clinicName}
+                  src={CLINIC.mapsEmbed}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setMapLoaded(true)}
+                  className="flex h-[260px] w-full flex-col items-center justify-center gap-3 bg-paper-2 text-ink-2 transition-colors hover:bg-teal-soft md:h-[260px]"
+                >
+                  <Icon name="pin" className="h-8 w-8 text-teal" />
+                  <span className="text-[0.92rem] font-semibold text-teal">{t.common.loadMap}</span>
+                  <span className="px-6 text-center text-[0.8rem] text-ink-3">
+                    {CLINIC.address.street} — {t.common.addressCity}
+                  </span>
+                </button>
+              )}
             </div>
             <p className="mt-5 text-[0.85rem] text-ink-3">
               {t.contact.emailLabel} :{' '}

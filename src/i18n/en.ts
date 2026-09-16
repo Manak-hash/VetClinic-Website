@@ -56,6 +56,11 @@ const en: Messages = {
       title: 'Page not found | Maârif Veterinary Clinic',
       description: "This page doesn't exist. Head back to the home page of Maârif Veterinary Clinic, Casablanca.",
     },
+    privacy: {
+      title: 'Privacy | Maârif Veterinary Clinic, Casablanca',
+      description:
+        'Privacy: this website collects no personal data. Hosting, third-party services and your rights (Moroccan law 09-08).',
+    },
   },
 
   nav: {
@@ -65,6 +70,7 @@ const en: Messages = {
     faq: 'FAQ',
     contact: 'Contact',
     zones: 'Areas served',
+    privacy: 'Privacy',
   },
 
   common: {
@@ -108,6 +114,38 @@ const en: Messages = {
     pageNotFoundText:
       'Even pages get lost sometimes. The simplest fix: head back home, or message us directly on WhatsApp.',
     callPrice: '05 22 23 30 95',
+    skipToContent: 'Skip to main content',
+    loadMap: 'Load the Google Maps map',
+  },
+
+  privacy: {
+    heroKicker: 'Transparency',
+    heroH1: 'Privacy',
+    heroSub:
+      'This website collects no personal data: no forms, no trackers, no advertising cookies. This page explains, in full transparency, what happens when you visit.',
+    updated: 'Last updated: September 2026.',
+    collectTitle: 'No data collection',
+    collectBody:
+      'The site has no contact form, no user accounts, no analytics and no tracking cookies. No personal data is collected, stored or shared by the website itself. Booking or asking a question happens via WhatsApp, phone or email — the conversation then takes place directly with the clinic, outside the website.',
+    hostTitle: 'Hosting',
+    hostBody:
+      'The site is hosted by Cloudflare, Inc. As with any web visit, the hosting servers receive the technical information needed to display the page: IP address, browser type, date and time of the request. These technical logs serve exclusively the security and proper functioning of the service, are retained for a limited period by the host, and are neither analysed for advertising nor sold. The site is served over HTTPS (encrypted transit).',
+    thirdTitle: 'Third-party services',
+    thirdBody:
+      'The site loads no third-party service without your knowledge. Only the Contact page contains a Google Maps map, displayed only if you ask for it — before that click, Google receives no information about you. The following links leave the website and are governed by their publisher’s terms:',
+    thirdItems: [
+        'WhatsApp (Meta) — booking: the conversation and its content are governed by WhatsApp\'s terms.',
+        'Google Maps — directions: loaded only after you click "Load the map".',
+        'Instagram (Meta) — the clinic\'s public page.',
+        'Phone and email — direct contact with the clinic, independent of the website.',
+      ],
+    rightsTitle: 'Your rights (law 09-08)',
+    rightsBody:
+      'Under Moroccan law 09-08 on the protection of individuals with regard to the processing of personal data, you have rights of access, rectification and objection regarding data you have communicated directly to the clinic (appointments, WhatsApp, email). To exercise them: contact@cndp.ma or ask at the clinic’s front desk.',
+    cndpTitle: 'CNDP declaration',
+    cndpBody:
+      'As the website carries out no automated processing of personal data, it is not subject to prior declaration with the National Commission for the Control of Personal Data Protection (CNDP). Should the clinic ever collect data in the future (for example an online booking form), the required declaration would be filed before any collection and this page would be updated.',
+    responsible: 'Website owner: Clinique Vétérinaire Maârif, 60, Boulevard Bir Anzarane, 20330 Casablanca, Morocco.',
   },
 
   home: {

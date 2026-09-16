@@ -265,6 +265,7 @@ function Footer() {
     { to: pathFor('faq', locale), label: t.nav.faq },
     { to: pathFor('contact', locale), label: t.nav.contact },
     { to: pathFor('zones', locale), label: t.nav.zones },
+    { to: pathFor('privacy', locale), label: t.nav.privacy },
   ]
   return (
     <footer className="section-pad bg-ink pb-14 pt-14 text-paper md:pb-14">
@@ -351,10 +352,18 @@ function Footer() {
 
 export function Layout() {
   useReveal()
+  const { t } = useI18n()
   const [menuOpen, setMenuOpen] = useState(false)
   return (
     <>
       <ScrollToTop />
+      {/* Lien d'évitement — premier élément focusable au clavier */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-teal focus:px-5 focus:py-2.5 focus:text-[0.9rem] focus:font-semibold focus:text-white focus:shadow-lift"
+      >
+        {t.common.skipToContent}
+      </a>
       <Header open={menuOpen} setOpen={setMenuOpen} />
       {/* Hors du header : le fixed du panneau se résout sur le viewport */}
       <MobileMenu open={menuOpen} />

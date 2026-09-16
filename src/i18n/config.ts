@@ -40,6 +40,7 @@ export type RouteId =
   | 'zoneMaarif'
   | 'zoneGauthier'
   | 'zoneAnfa'
+  | 'privacy'
   | 'notfound'
 
 /* Chemin par locale — le slug est traduit là où le SEO local le paie.
@@ -74,6 +75,13 @@ export const ROUTE_PATHS: Record<RouteId, Record<Locale, string>> = {
     es: '/es/zonas/anfa/',
   },
   notfound: { fr: '/404', en: '/en/404', ru: '/ru/404', ar: '/ar/404', es: '/es/404' },
+  privacy: {
+    fr: '/confidentialite/',
+    en: '/en/privacy/',
+    ru: '/ru/konfidencialnost/',
+    ar: '/ar/khususiya/',
+    es: '/es/privacidad/',
+  },
 }
 
 /** Chemin d'une route dans une locale. */

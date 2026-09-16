@@ -32,7 +32,7 @@ export interface ProtocolEntry {
 
 export interface Messages {
   meta: Record<
-    'home' | 'services' | 'equipe' | 'faq' | 'contact' | 'zones' | 'zoneMaarif' | 'zoneGauthier' | 'zoneAnfa' | 'notfound',
+    'home' | 'services' | 'equipe' | 'faq' | 'contact' | 'zones' | 'zoneMaarif' | 'zoneGauthier' | 'zoneAnfa' | 'notfound' | 'privacy',
     { title: string; description: string }
   >
 
@@ -43,6 +43,7 @@ export interface Messages {
     faq: string
     contact: string
     zones: string
+    privacy: string
   }
 
   common: {
@@ -80,6 +81,27 @@ export interface Messages {
     pageNotFoundTitle: string
     pageNotFoundText: string
     callPrice: string
+    skipToContent: string
+    loadMap: string
+  }
+
+  privacy: {
+    heroKicker: string
+    heroH1: string
+    heroSub: string
+    updated: string
+    collectTitle: string
+    collectBody: string
+    hostTitle: string
+    hostBody: string
+    thirdTitle: string
+    thirdBody: string
+    thirdItems: string[]
+    rightsTitle: string
+    rightsBody: string
+    cndpTitle: string
+    cndpBody: string
+    responsible: string
   }
 
   home: {
@@ -289,15 +311,21 @@ const fr: Messages = {
       title: 'Page introuvable | Clinique Vétérinaire Maârif',
       description: "Cette page n'existe pas. Retour à l'accueil de la Clinique Vétérinaire Maârif, Casablanca.",
     },
+    privacy: {
+      title: 'Confidentialité | Clinique Vétérinaire Maârif, Casablanca',
+      description:
+        'Confidentialité : ce site ne collecte aucune donnée personnelle. Hébergement, services tiers et vos droits (loi 09-08).',
+    },
   },
 
   nav: {
     home: 'Accueil',
     services: 'Services',
-    equipe: "L'équipe",
+    equipe: 'Équipe',
     faq: 'FAQ',
     contact: 'Contact',
-    zones: 'Zones desservies',
+    zones: 'Zones',
+    privacy: 'Confidentialité',
   },
 
   common: {
@@ -341,6 +369,38 @@ const fr: Messages = {
     pageNotFoundText:
       'Même les pages se perdent parfois. Le plus simple : revenir à l’accueil, ou nous écrire directement sur WhatsApp.',
     callPrice: '05 22 23 30 95',
+    skipToContent: 'Aller au contenu principal',
+    loadMap: 'Charger la carte Google Maps',
+  },
+
+  privacy: {
+    heroKicker: 'Transparence',
+    heroH1: 'Confidentialité',
+    heroSub:
+      'Ce site ne collecte aucune donnée personnelle : pas de formulaire, pas de traceur, pas de cookie publicitaire. Cette page explique, en toute transparence, ce qui se passe quand vous le consultez.',
+    updated: 'Dernière mise à jour : septembre 2026.',
+    collectTitle: 'Aucune collecte de données',
+    collectBody:
+      'Le site ne comporte aucun formulaire de contact, aucun compte utilisateur, aucun outil de mesure d’audience et aucun cookie de suivi. Aucune donnée personnelle n’est collectée, enregistrée ou partagée par le site lui-même. Prendre rendez-vous ou poser une question se fait par WhatsApp, par téléphone ou par email — la conversation se déroule alors directement avec la clinique, en dehors du site.',
+    hostTitle: 'Hébergement',
+    hostBody:
+      'Le site est hébergé par Cloudflare, Inc. Comme pour toute consultation web, les serveurs d’hébergement reçoivent des informations techniques nécessaires à l’affichage de la page : adresse IP, type de navigateur, date et heure de la requête. Ces journaux techniques servent exclusivement à la sécurité et au bon fonctionnement du service, sont conservés pour une durée limitée par l’hébergeur et ne sont ni analysés à des fins publicitaires ni cédés. Le site est servi en HTTPS (chiffrement du transit).',
+    thirdTitle: 'Services tiers',
+    thirdBody:
+      'Le site ne charge aucun service tiers à votre insu. Seule la page Contact contient une carte Google Maps, affichée uniquement si vous demandez son chargement — avant ce clic, Google ne reçoit aucune information vous concernant. Les liens suivants quittent le site et relèvent des conditions de leur éditeur :',
+    thirdItems: [
+      'WhatsApp (Meta) — prise de rendez-vous : la conversation et son contenu sont régis par les conditions de WhatsApp.',
+      'Google Maps — plan d’accès : chargé uniquement après votre clic sur « Charger la carte ».',
+      'Instagram (Meta) — page publique de la clinique.',
+      'Téléphone et email — contact direct avec la clinique, indépendant du site.',
+    ],
+    rightsTitle: 'Vos droits (loi 09-08)',
+    rightsBody:
+      'Conformément à la loi 09-08 relative à la protection des personnes physiques à l’égard du traitement des données à caractère personnel, vous disposez d’un droit d’accès, de rectification et d’opposition concernant les données que vous auriez communiquées directement à la clinique (rendez-vous, WhatsApp, email). Pour les exercer : contact@cndp.ma ou contact direct à l’accueil de la clinique.',
+    cndpTitle: 'Déclaration CNDP',
+    cndpBody:
+      'Le site ne procédant à aucun traitement automatisé de données personnelles, il n’est pas soumis à déclaration préalable auprès de la Commission Nationale de contrôle de la protection des Données à caractère Personnel (CNDP). Si la clinique venait à collecter des données à l’avenir (par exemple un formulaire de rendez-vous en ligne), la déclaration nécessaire serait effectuée avant toute collecte et cette page serait mise à jour.',
+    responsible: 'Responsable du site : Clinique Vétérinaire Maârif, 60, Boulevard Bir Anzarane, 20330 Casablanca, Maroc.',
   },
 
   home: {

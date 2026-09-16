@@ -26,6 +26,15 @@
   </head>
   <body>
     <div id="root"></div>
+    <noscript
+      ><style>
+        /* Sans JS : le reveal-on-scroll ne peut pas s'exécuter — contenu visible */
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style></noscript
+    >
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
